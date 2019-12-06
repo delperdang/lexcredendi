@@ -1,0 +1,57 @@
+{% extends 'home/base.html' %}
+
+{% block main %}
+{% load static %}
+<div class="d-flex align-items-center p-3 my-3 text-white-50 {{ SEASONAL_COLOR }} rounded box-shadow">
+    <img class="mr-3" src="{% static 'home/img/deacon.svg' %}" alt=""
+        width="48" height="48">
+    <div class="lh-100">
+        <h6 class="mb-0 text-white lh-100">Daily Readings</h6>
+    </div>
+</div>
+
+        <div class="media text-muted pt-3">
+            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <strong class="text-gray-dark">{{READING_1_TITLE}}</strong>
+                </div>
+                <span class="d-block">{{READING_1_TEXT}}</span>
+            </div>
+        </div>
+        <div class="media text-muted pt-3">
+            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <strong class="text-gray-dark">{{RESPONSORIAL_TITLE}}</strong>
+                </div>
+                <span class="d-block">{{RESPONSORIAL_TEXT}}</span>
+            </div>
+        </div>
+        <div class="media text-muted pt-3">
+            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <strong class="text-gray-dark">{{READING_2_TITLE}}</strong>
+                </div>
+                <span class="d-block">{{READING_2_TEXT}}</span>
+            </div>
+        </div>
+        <div class="media text-muted pt-3">
+            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <strong class="text-gray-dark">{{ALLELUIA_TITLE}}</strong>
+                </div>
+                <span class="d-block">{{ALLELUIA_TEXT}}</span>
+            </div>
+        </div>
+        <div class="media text-muted pt-3">
+            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <strong class="text-gray-dark">{{GOSPEL_TITLE}}</strong>
+                </div>
+                <span class="d-block">{{GOSPEL_TEXT}}</span>
+            </div>
+        </div>
+        <small class="d-block text-right mt-3">
+            <a href="{{AUDIO_URL}}">Download Audio</a>
+        </small>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="svg2" viewBox="0 0 533.88 762.16" version="1.1">
+  <g id="layer1" transform="translate(-93.438 -123.03)">
+    <path id="path2830" d="m323.75 123.03v114.66h-230.31v56.062h81.313l11.625 9.5938 22.719 21.719 9.5938 5.0312 8.0938 4.5625c4.0668 2.2925 8.6293 3.6484 12.625 6.0625 8.4433 5.1012 23.75 17.656 23.75 17.656l19.188 7.0938 10.094 4.5312 2.0312 5.5625 9.5938 29.281 6.5625 34.344 3.5312 14.656-7.5625 27.781-6.6 13.13-4.0312 17.688 0.5 15.156 4.0625 24.25 14.125 69.688 2.5312 19.688s0.5 12.631 0.5 15.156c0 2.5254-0.5 17.183-0.5 20.719 0 3.5355 4.0312 20.719 4.0312 20.719l4.0625 22.719-1.0312 57.062h-9.5938v49l4.5625 10.594h6.0625l1 47.5 55.062 0.5-1.0312-48h7.0938l6.0938-7.9509-1.0625-51.643h-8.0625l-0.53125-44.938 7.5938-36.375-1-29.281-2.5312-19.719 1-18.688 10.09-35.84 1.5312-39.406 0.5-21.719-4.03-29.28-4.0625-18.188v-22.219l7.5938-34.344 4.5312-33.344 4.5625-19.688 4.5312-11.125 27.281-10.094 25.75-19.188 17.688-6.5938 27.281-18.156 16.156-15.656h99v-56.062h-244.97v-114.66h-58.594zm162.63 170.72-22.72 15.13-20.19 10.12l-17.188 8.0625s-5.0582 5.0625-8.5938 5.0625c-3.5355 0-16.156 0.5-16.156 0.5l-6.5625 1.5312-10.594 7.0625-3.0312-1-1.5312-46.469h106.56zm-169.69 0-3.0312 10.594-1 10.094-5.5625 11.625-0.5 13.625-13.156-5.0312-16.156-3.5312-18.688-7.5938-17.156-6.0625-9.5938-5.5625-10.625-12.625-8.5938-5.5312h104.06z"/>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>Christ on the cross</dc:title>
+        <dc:date>2010-06-01T22:44:20</dc:date>
+        <dc:description>A silhouette of Jesus Christ on the cross.</dc:description>
+        <dc:source>http://openclipart.org/detail/63997/christ-on-the-cross-by-laobc</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>laobc</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>black and white</rdf:li>
+            <rdf:li>christ</rdf:li>
+            <rdf:li>christianity</rdf:li>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>cross</rdf:li>
+            <rdf:li>jesus</rdf:li>
+            <rdf:li>religion</rdf:li>
+            <rdf:li>silhouette</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

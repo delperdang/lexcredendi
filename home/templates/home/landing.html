@@ -1,0 +1,78 @@
+{% extends 'home/base.html' %}
+
+{% block main %}
+{% load static %}
+
+      <div class="d-flex align-items-center p-3 my-3 text-white-50 {{ SEASONAL_COLOR }} rounded box-shadow">
+        <img class="mr-3" src="{% static 'home/img/monstrance.svg' %}" alt="" width="48" height="48">
+        <div class="lh-100">
+          <h6 class="mb-0 text-white lh-100">Lex Orandi Lex Credendi</h6>
+          <small>Since 2019</small>
+        </div>
+      </div>
+
+      <div class="my-3 p-3 bg-white rounded box-shadow">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Applications</h6>
+        <div class="media text-muted pt-3">
+          <img class="mr-3" src="{% static 'home/img/bishop.svg' %}" alt="" width="36" height="36">
+          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <div class="d-flex justify-content-between align-items-center w-100">
+              <strong class="text-gray-dark">Apologetics</strong>
+              <a href="/apologetics">Explore &raquo</a>
+            </div>
+            <span class="d-block">Search proof texts and analysis by topic</span>
+          </div>
+        </div>
+        <div class="media text-muted pt-3">
+          <img class="mr-3" src="{% static 'home/img/pope.svg' %}" alt="" width="36" height="36">
+          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <div class="d-flex justify-content-between align-items-center w-100">
+              <strong class="text-gray-dark">Doctrine</strong>
+              <a href="/doctrine">Explore &raquo</a>
+            </div>
+            <span class="d-block">Read and memorize catechetical formulas and canonical lists</span>
+          </div>
+        </div>
+        <div class="media text-muted pt-3">
+          <img class="mr-3" src="{% static 'home/img/cathedral.svg' %}" alt="" width="36" height="36">
+          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <div class="d-flex justify-content-between align-items-center w-100">
+              <strong class="text-gray-dark">Calendar</strong>
+              <a href="/litcal">Explore &raquo</a>
+            </div>
+            <span class="d-block">View the current celebration and season of the Church</span>
+          </div>
+        </div>
+        <div class="media text-muted pt-3">
+          <img class="mr-3" src="{% static 'home/img/crucifix.svg' %}" alt="" width="36" height="36">
+          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <div class="d-flex justify-content-between align-items-center w-100">
+              <strong class="text-gray-dark">Piety</strong>
+              <a href="/piety">Explore &raquo</a>
+            </div>
+            <span class="d-block">Explore traditional ways to incorporate the faith into daily life</span>
+          </div>
+        </div>
+        <div class="media text-muted pt-3">
+          <img class="mr-3" src="{% static 'home/img/priest.svg' %}" alt="" width="36" height="36">
+          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <div class="d-flex justify-content-between align-items-center w-100">
+              <strong class="text-gray-dark">Prayer</strong>
+              <a href="/prayer">Explore &raquo</a>
+            </div>
+            <span class="d-block">Learn the traditional and powerful Catholic prayers</span>
+          </div>
+        </div>
+        <div class="media text-muted pt-3">
+          <img class="mr-3" src="{% static 'home/img/deacon.svg' %}" alt="" width="36" height="36">
+          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <div class="d-flex justify-content-between align-items-center w-100">
+              <strong class="text-gray-dark">Readings</strong>
+              <a href="/readings">Explore &raquo</a>
+            </div>
+            <span class="d-block">Follow along with daily Mass readings (includes audio)</span>
+          </div>
+        </div>
+      </div>
+
+{% endblock %}

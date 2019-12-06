@@ -1,0 +1,5 @@
+beautifulsoup4
+Django
+mysqlclient
+python-dateutil
+requests
