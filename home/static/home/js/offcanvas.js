@@ -7,7 +7,7 @@ $(function () {
 })
 
 $(function () {
-  if (location.protocol !== "http:") {
-    location.protocol = "http:";
+  if (location.protocol !== "https:") {
+    location.protocol = "https:";
   }
 })
