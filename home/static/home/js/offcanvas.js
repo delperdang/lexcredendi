@@ -5,9 +5,3 @@ $(function () {
     $('.offcanvas-collapse').toggleClass('open')
   })
 })
-
-$(function () {
-  if (location.protocol !== "https:") {
-    location.protocol = "https:";
-  }
-})
