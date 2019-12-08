@@ -43,9 +43,6 @@ def assemble_readings_dict(soup):
     }
     headings = soup.find_all("h4")
     divs = soup.find_all("div", class_="poetry")
-    print(headings)
-    print(len(headings))
-    print(len(divs))
     assert len(divs) >= len(headings)
     for i in range(len(headings)):
         if 'READING 1' in headings[i].text.upper():
