@@ -8,6 +8,7 @@ import dateutil.parser as dparser
 from bs4 import BeautifulSoup
 
 # USCCB URL constants
+USCCB_ROOT = 'http://www.usccb.org'
 USCCB_READINGS = 'http://www.usccb.org/bible/readings/{}.cfm'
 USCCB_AUDIO = 'http://ccc.usccb.org/cccradio/NABPodcasts/nab_feed.xml'
 
@@ -36,24 +37,28 @@ def assemble_readings_dict(soup):
     readings = {
         'READING_1_TITLE': '',
         'READING_1_TEXT': '',
+        'READING_1_LINK': '',
         'READING_2_TITLE': '',
         'READING_2_TEXT': '',
+        'READING_2_LINK': '',
         'GOSPEL_TITLE': '',
-        'GOSPEL_TEXT': ''
+        'GOSPEL_TEXT': '',
+        'GOSPEL_LINK': ''
     }
     headings = soup.find_all("h4")
-    divs = soup.find_all("div", class_="poetry")
-    assert len(divs) >= len(headings)
-    for i in range(len(headings)):
-        if 'READING 1' in headings[i].text.upper():
-            readings['READING_1_TITLE'] = headings[i].text
-            readings['READING_1_TEXT'] = divs[i].text
-        if 'READING 2' in headings[i].text.upper():
-            readings['READING_2_TITLE'] = headings[i].text
-            readings['READING_2_TEXT'] = divs[i].text
-        if 'GOSPEL' in headings[i].text.upper():
-            readings['GOSPEL_TITLE'] = headings[i].text
-            readings['GOSPEL_TEXT'] = divs[i].text
+    for heading in headings:
+        if 'READING 1' in heading.text.upper():
+            readings['READING_1_TITLE'] = 'Reading 1'
+            readings['READING_1_TEXT'] = heading.a.text
+            readings['READING_1_LINK'] = USCCB_ROOT + heading.a.get('href')
+        if 'READING 2' in heading.text.upper():
+            readings['READING_2_TITLE'] = 'Reading 2'
+            readings['READING_2_TEXT'] = heading.a.text
+            readings['READING_2_LINK'] = USCCB_ROOT + heading.a.get('href')
+        if 'GOSPEL' in heading.text.upper():
+            readings['GOSPEL_TITLE'] = 'Reading 3'
+            readings['GOSPEL_TEXT'] = heading.a.text
+            readings['GOSPEL_LINK'] = USCCB_ROOT + heading.a.get('href')
     return readings
 
 def extract_audio_url(soup, local_now=datetime.now()):
@@ -76,3 +81,4 @@ audio_soup = get_page_soup(USCCB_AUDIO)
 readings_context = assemble_readings_dict(readings_soup)
 audio_url = extract_audio_url(audio_soup)
 readings_context['AUDIO_URL'] = audio_url
+print(readings_context)
