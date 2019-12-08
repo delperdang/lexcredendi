@@ -49,18 +49,28 @@ def assemble_readings_dict(soup):
     divs = soup.find_all("div", class_="poetry")
     for i in range(len(headings)):
         if 'READING 1' in headings[i].text.upper():
+            print(headings[i].text)
+            print(divs[i].text)
             readings['READING_1_TITLE'] = headings[i].text
             readings['READING_1_TEXT'] = divs[i].text.replace(',', ', ').replace('.', '. ').replace(';', '; ').replace(':', ': ').replace('?', '? ').replace('!', '! ').replace('  ', ' ').replace(', " ', '," ').replace('. " ', '." ').replace('; " ', ';" ').replace(': " ', ':" ').replace('? " ', '?" ').replace('! " ', '!" ')
         if 'RESPONSORIAL' in headings[i].text.upper():
+            print(headings[i].text)
+            print(divs[i].text)
             readings['RESPONSORIAL_TITLE'] = headings[i].text
             readings['RESPONSORIAL_TEXT'] = divs[i].text.replace(',', ', ').replace('.', '. ').replace(';', '; ').replace(':', ': ').replace('?', '? ').replace('!', '! ').replace('  ', ' ').replace(', " ', '," ').replace('. " ', '." ').replace('; " ', ';" ').replace(': " ', ':" ').replace('? " ', '?" ').replace('! " ', '!" ')
         if 'READING 2' in headings[i].text.upper():
+            print(headings[i].text)
+            print(divs[i].text)
             readings['READING_2_TITLE'] = headings[i].text
             readings['READING_2_TEXT'] = divs[i].text.replace(',', ', ').replace('.', '. ').replace(';', '; ').replace(':', ': ').replace('?', '? ').replace('!', '! ').replace('  ', ' ').replace(', " ', '," ').replace('. " ', '." ').replace('; " ', ';" ').replace(': " ', ':" ').replace('? " ', '?" ').replace('! " ', '!" ')
         if 'ALLELUIA' in headings[i].text.upper():
+            print(headings[i].text)
+            print(divs[i].text)
             readings['ALLELUIA_TITLE'] = headings[i].text
             readings['ALLELUIA_TEXT'] = divs[i].text.replace(',', ', ').replace('.', '. ').replace(';', '; ').replace(':', ': ').replace('?', '? ').replace('!', '! ').replace('  ', ' ').replace(', " ', '," ').replace('. " ', '." ').replace('; " ', ';" ').replace(': " ', ':" ').replace('? " ', '?" ').replace('! " ', '!" ')
         if 'GOSPEL' in headings[i].text.upper():
+            print(headings[i].text)
+            print(divs[i].text)
             readings['GOSPEL_TITLE'] = headings[i].text
             readings['GOSPEL_TEXT'] = divs[i].text.replace(',', ', ').replace('.', '. ').replace(';', '; ').replace(':', ': ').replace('?', '? ').replace('!', '! ').replace('  ', ' ').replace(', " ', '," ').replace('. " ', '." ').replace('; " ', ';" ').replace(': " ', ':" ').replace('? " ', '?" ').replace('! " ', '!" ')
     return readings
