@@ -36,30 +36,24 @@ def assemble_readings_dict(soup):
     readings = {
         'READING_1_TITLE': '',
         'READING_1_TEXT': '',
-        'RESPONSORIAL_TITLE': '',
-        'RESPONSORIAL_TEXT': '',
         'READING_2_TITLE': '',
         'READING_2_TEXT': '',
-        'ALLELUIA_TITLE': '',
-        'ALLELUIA_TEXT': '',
         'GOSPEL_TITLE': '',
         'GOSPEL_TEXT': ''
     }
     headings = soup.find_all("h4")
     divs = soup.find_all("div", class_="poetry")
+    print(headings)
+    print(len(headings))
+    print(len(divs))
+    assert len(divs) >= len(headings)
     for i in range(len(headings)):
         if 'READING 1' in headings[i].text.upper():
             readings['READING_1_TITLE'] = headings[i].text
             readings['READING_1_TEXT'] = divs[i].text
-        if 'RESPONSORIAL' in headings[i].text.upper():
-            readings['RESPONSORIAL_TITLE'] = headings[i].text
-            readings['RESPONSORIAL_TEXT'] = divs[i].text
         if 'READING 2' in headings[i].text.upper():
             readings['READING_2_TITLE'] = headings[i].text
             readings['READING_2_TEXT'] = divs[i].text
-        if 'ALLELUIA' in headings[i].text.upper():
-            readings['ALLELUIA_TITLE'] = headings[i].text
-            readings['ALLELUIA_TEXT'] = divs[i].text
         if 'GOSPEL' in headings[i].text.upper():
             readings['GOSPEL_TITLE'] = headings[i].text
             readings['GOSPEL_TEXT'] = divs[i].text
