@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from readings.usccb import readings_context
 
 # Create your views here.
 
 def home(request):
+    from readings.usccb import readings_context
     return render(request, 'readings/home.html', readings_context)
