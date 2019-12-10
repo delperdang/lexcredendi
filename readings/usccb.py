@@ -74,11 +74,14 @@ def extract_audio_url(soup, local_now=datetime.now()):
             url = item.enclosure.get('url')
     return url
 
-# execution code
-readings_url = get_readings_url()
-readings_soup = get_page_soup(readings_url)
-audio_soup = get_page_soup(USCCB_AUDIO)
-readings_context = assemble_readings_dict(readings_soup)
-audio_url = extract_audio_url(audio_soup)
-readings_context['AUDIO_URL'] = audio_url
-print(readings_context)
+def get_context():
+    '''
+    returns a context json of the current readings and audio
+    '''
+    readings_url = get_readings_url()
+    readings_soup = get_page_soup(readings_url)
+    audio_soup = get_page_soup(USCCB_AUDIO)
+    readings_context = assemble_readings_dict(readings_soup)
+    audio_url = extract_audio_url(audio_soup)
+    readings_context['AUDIO_URL'] = audio_url
+    return readings_context

@@ -1,5 +1,5 @@
 '''
-Captures the latest daily readings text and audio from the USCCB
+Captures the latest liturgical calendar entry from the usccb readings
 '''
 
 from datetime import datetime
@@ -43,7 +43,12 @@ def assemble_litcal_dict(soup):
             litcal['LITURGICAL_DAY'] = heading.text.split('Lectionary')[0]
     return litcal
 
-# execution code
-readings_url = get_readings_url()
-readings_soup = get_page_soup(readings_url)
-litcal_context = assemble_litcal_dict(readings_soup)
+def get_context():
+    '''
+    returns a context json of the current liturgical date
+    '''
+    readings_url = get_readings_url()
+    readings_soup = get_page_soup(readings_url)
+    litcal_context = assemble_litcal_dict(readings_soup)
+    return litcal_context
+
