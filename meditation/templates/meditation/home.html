@@ -4,7 +4,7 @@
 {% load static %}
 <link href="{% static 'meditation/css/meditation.css' %}" rel="stylesheet">
 
-    <p class="media text-muted pt-3">"Lord Jesus Christ..."</p>
+    <p>"Lord Jesus Christ..."</p>
     <br>
     <div class="media text-muted pt-3">
         <div class="watch-face">
@@ -17,9 +17,10 @@
         </div>
     </div>
     <br><br>
-    <p class="media text-muted pt-3">"have mercy on me"</p>
+    <p>"have mercy on me"</p>
+
     <small class="d-block text-right mt-3">
-        <button id="btnToggle" class="btn btn-info" onclick="toggleInstructions()">Show Instructions</button>
+        <button id="btnToggle" class="btn btn-outline-info btn-sm" onclick="toggleInstructions()">Show Instructions</button>
     </small>
 
     <div id="instructions" style="visibility: hidden" class="media text-muted pt-3">
