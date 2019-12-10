@@ -5,14 +5,27 @@ Captures the latest daily readings text and audio from the USCCB
 from datetime import datetime
 import requests
 import dateutil.parser as dparser
+from dateutil import tz
 from bs4 import BeautifulSoup
 
 # USCCB URL constants
 USCCB_ROOT = 'http://www.usccb.org'
 USCCB_READINGS = 'http://www.usccb.org/bible/readings/{}.cfm'
 USCCB_AUDIO = 'http://ccc.usccb.org/cccradio/NABPodcasts/nab_feed.xml'
+TARGET_TZ = 'America/New_York'
 
-def get_readings_url(local_now=datetime.now()):
+def get_now():
+    '''
+    builds the current now in local time
+    '''
+    utc_now = datetime.now()
+    from_zone = tz.gettz('UTC')
+    to_zone = tz.gettz(TARGET_TZ)
+    utc_now.replace(tzinfo=from_zone)
+    target_now = utc_now.astimezone(to_zone)
+    return target_now
+
+def get_readings_url(local_now):
     '''
     asembles readings url based on local time
     '''
@@ -78,7 +91,8 @@ def get_context():
     '''
     returns a context json of the current readings and audio
     '''
-    readings_url = get_readings_url()
+    now = get_now()
+    readings_url = get_readings_url(now)
     readings_soup = get_page_soup(readings_url)
     audio_soup = get_page_soup(USCCB_AUDIO)
     readings_context = assemble_readings_dict(readings_soup)
