@@ -22,6 +22,7 @@ urlpatterns = [
     path('apologetics/', include('apologetics.urls')),
     path('doctrine/', include('doctrine.urls')),
     path('litcal/', include('litcal.urls')),
+    path('meditation/', include('meditation.urls')),
     path('piety/', include('piety.urls')),
     path('prayer/', include('prayer.urls')),
     path('readings/', include('readings.urls')),

@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'apologetics',
     'doctrine',
     'litcal',
+    'meditation',
     'piety',
     'prayer',
     'readings',
