@@ -17,6 +17,8 @@
 
     <!-- Custom styles for this template -->
     <link href="{% static 'home/css/offcanvas.css' %}" rel="stylesheet">
+    {% block head %}
+    {% endblock %}
   </head>
 
   <body class="bg-light">
@@ -54,10 +56,8 @@
       </div>
     </nav>
 
-    <main role="main" class="container">
-      {% block main %}
-      {% endblock %}
-    </main>
+    {% block main %}
+    {% endblock %}
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
