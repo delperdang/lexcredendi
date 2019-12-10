@@ -56,7 +56,7 @@ def assemble_readings_dict(soup):
             readings['READING_2_TEXT'] = heading.a.text
             readings['READING_2_LINK'] = USCCB_ROOT + heading.a.get('href')
         if 'GOSPEL' in heading.text.upper():
-            readings['GOSPEL_TITLE'] = 'Reading 3'
+            readings['GOSPEL_TITLE'] = 'Gospel'
             readings['GOSPEL_TEXT'] = heading.a.text
             readings['GOSPEL_LINK'] = USCCB_ROOT + heading.a.get('href')
     return readings
