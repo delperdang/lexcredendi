@@ -18,6 +18,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('tz_detect/', include('tz_detect.urls')),
     path('', include('home.urls')),
     path('apologetics/', include('apologetics.urls')),
     path('doctrine/', include('doctrine.urls')),
