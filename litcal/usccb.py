@@ -2,7 +2,6 @@
 Captures the latest liturgical calendar entry from the usccb readings
 '''
 
-from datetime import datetime
 import requests
 import dateutil.parser as dparser
 from dateutil import tz
@@ -12,18 +11,7 @@ from bs4 import BeautifulSoup
 USCCB_READINGS = 'http://www.usccb.org/bible/readings/{}.cfm'
 TARGET_TZ = 'America/New_York'
 
-def get_now():
-    '''
-    builds the current now in local time
-    '''
-    utc_now = datetime.now()
-    from_zone = tz.gettz('UTC')
-    to_zone = tz.gettz(TARGET_TZ)
-    utc_now.replace(tzinfo=from_zone)
-    target_now = utc_now.astimezone(to_zone)
-    return target_now
-
-def get_readings_url(local_now=datetime.now()):
+def get_readings_url(local_now):
     '''
     asembles readings url based on local time
     '''
@@ -56,12 +44,11 @@ def assemble_litcal_dict(soup):
             litcal['LITURGICAL_DAY'] = heading.text.split('Lectionary')[0]
     return litcal
 
-def get_context():
+def get_context(localtime):
     '''
     returns a context json of the current liturgical date
     '''
-    now = get_now()
-    readings_url = get_readings_url(now)
+    readings_url = get_readings_url(localtime)
     readings_soup = get_page_soup(readings_url)
     litcal_context = assemble_litcal_dict(readings_soup)
     return litcal_context
