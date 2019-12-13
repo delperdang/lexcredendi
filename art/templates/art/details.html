@@ -15,8 +15,8 @@
 
                 {% for record in records %}
                 <div class="col-sm-12 col-md-4">
-                    <a class="lightbox" href="{{ record.work.url }}">
-                        <img src="{{ record.work.url }}" alt="{{ record.title }}">
+                    <a class="lightbox" href="{% static 'art/img/' %}{{ record.img }}">
+                        <img src="{% static 'art/img/' %}{{ record.img }}" alt="{{ record.title }}">
                     </a>
                 </div>
                 {% endfor %}
