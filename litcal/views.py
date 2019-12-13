@@ -6,6 +6,8 @@ from dateutil import tz
 from bs4 import BeautifulSoup
 
 # Create your views here.
+
+
 class USCCB(object):
     '''
     Captures the latest liturgical calendar entry from the usccb readings
