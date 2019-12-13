@@ -1,6 +1,11 @@
 {% extends 'home/base.html' %}
 {% load static %}
 
+{% block head %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.0/baguetteBox.min.css" integrity="sha256-cKiyvRKpm8RaTdU71Oq2RUVgvfWrdIXjvVdQF2oZ1Y4=" crossorigin="anonymous" />
+<link href="{% static 'art/css/fluid-gallery.css' %}" rel="stylesheet">
+{% endblock %}
+
 {% block main %}
 <main role="main" class="container">
     <div class="d-flex align-items-center p-3 my-3 text-white-50 {{ SEASONAL_COLOR }} rounded box-shadow">
@@ -11,8 +16,34 @@
         </div>
     </div>
 
-    {% for record in records %}
-    {% endfor %}
+    <div class="container gallery-container">
+
+        <h1>Bootstrap 3 Gallery</h1>
+
+        <p class="page-description text-center">Fluid Layout With Overlay Effect</p>
+
+        <div class="tz-gallery">
+
+            <div class="row">
+
+                {% for record in records %}
+                <div class="col-sm-12 col-md-4">
+                    <a class="lightbox" href="{{ record.work.url }}">
+                        <img src="{{ record.work.url }}" alt="{{ record.title }}">
+                    </a>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </div>
 
 </main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.0/baguetteBox.min.js" integrity="sha256-yQGjQhFs3LtyiN5hhr3k9s9TWZOh/RzCkD3gwwCKlkg=" crossorigin="anonymous"></script>
+<script>
+    baguetteBox.run('.tz-gallery');
+</script>
 {% endblock %}
