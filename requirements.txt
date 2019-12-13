@@ -2,5 +2,6 @@ beautifulsoup4
 Django
 django-tz-detect
 mysqlclient
+pillow
 python-dateutil
 requests
