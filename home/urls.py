@@ -4,4 +4,5 @@ from home import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('createsuperuser', views.mysuperuser, name='mysuperuser'),
+    path('localtime', views.localtime, name='localtime'),
 ]
