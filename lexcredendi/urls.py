@@ -21,6 +21,7 @@ urlpatterns = [
     path('tz_detect/', include('tz_detect.urls')),
     path('', include('home.urls')),
     path('apologetics/', include('apologetics.urls')),
+    path('art/', include('art.urls')),
     path('doctrine/', include('doctrine.urls')),
     path('litcal/', include('litcal.urls')),
     path('meditation/', include('meditation.urls')),

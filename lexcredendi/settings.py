@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'tz_detect',
     'home',
     'apologetics',
+    'art',
     'doctrine',
     'litcal',
     'meditation',
