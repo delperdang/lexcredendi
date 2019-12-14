@@ -7,7 +7,19 @@ from django.utils import timezone
 # Create your views here.
 
 def home(request):
-    return render(request, 'home/landing.html')
+    updates = [
+        {
+            'author': "dieselpwr",
+            'date': "2019-12-14T06:00:04Z",
+            'message': "renamed files to include leading 0"
+        }
+    ]
+
+    context = {
+        'updates': updates
+    }
+
+    return render(request, 'home/landing.html', context)
 
 def mysuperuser(request):
     if not User.objects.filter(username='dieselpwr').exists():
