@@ -4,12 +4,11 @@ from art.models import Record
 # Create your views here.
 
 def home(request):
-    records = Record.objects.all().order_by('code')
 
     return render(request, 'art/home.html')
 
 def details(request, album):
-    records = Record.objects.filter(album=album)
+    records = Record.objects.filter(album=album).order_by('filename')
 
     context = {
         'records': records
