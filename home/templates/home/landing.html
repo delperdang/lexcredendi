@@ -94,5 +94,18 @@
           </div>
         </div>
       </div>
+
+      <div class="my-3 p-3 bg-white rounded box-shadow">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Updates</h6>
+        {% for update in updates %}
+        <div class="media text-muted pt-3">
+          <img class="mr-3" src="{% static 'home/img/monk.svg' %}" alt="" width="36" height="36">
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">{{ update.author }}</strong>
+            {{ update.date }}: {{ update.message }}
+          </p>
+        </div>
+        {% endfor %}
+      </div>
 </main>
 {% endblock %}
