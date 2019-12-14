@@ -102,10 +102,13 @@
           <img class="mr-3" src="{% static 'home/img/quill.svg' %}" alt="" width="36" height="36">
           <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
             <strong class="d-block text-gray-dark">{{ update.author }}</strong>
-            {{ update.date }}: {{ update.message }}
+            {{ update.date }} {{ update.message }}
           </p>
         </div>
         {% endfor %}
+        <small class="d-block text-right mt-3">
+          <a href="https://github.com/dieselpwr/lexcredendi/commits/master">All Updates</a>
+        </small>
       </div>
 </main>
 {% endblock %}

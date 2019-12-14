@@ -3,17 +3,29 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.utils import timezone
+import requests
 
 # Create your views here.
 
+def fetch_updates():
+    '''
+    retrieves last 10 commits from github
+    '''
+    updates_json = []
+    commits_json = requests.get('https://api.github.com/repos/dieselpwr/lexcredendi/commits').json()[:10]
+    for commit in commits_json:
+        updates_json.append(
+            {
+                'author': commit['commit']['author']['name'],
+                'date': commit['commit']['author']['date'],
+                'message': commit['commit']['message']
+
+            }
+        )
+    return updates_json
+
 def home(request):
-    updates = [
-        {
-            'author': "dieselpwr",
-            'date': "2019-12-14T06:00:04Z",
-            'message': "renamed files to include leading 0"
-        }
-    ]
+    updates = fetch_updates()
 
     context = {
         'updates': updates
