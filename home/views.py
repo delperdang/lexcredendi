@@ -12,7 +12,7 @@ def fetch_updates():
     retrieves last 10 commits from github
     '''
     updates_json = []
-    commits_json = requests.get('https://api.github.com/repos/dieselpwr/lexcredendi/commits').json()[:10]
+    commits_json = requests.get('https://api.github.com/repos/dieselpwr/lexcredendi/commits').json()[:5]
     for commit in commits_json:
         updates_json.append(
             {
