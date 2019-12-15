@@ -6,6 +6,9 @@ from dateutil import tz
 from bs4 import BeautifulSoup
 
 # Create your views here.
+APP_NAME = 'litcal'
+APP_FULL_NAME = 'Liturgical Calendar'
+ICON_FILENAME = 'cathedral.svg'
 
 
 class USCCB(object):
@@ -39,27 +42,35 @@ class USCCB(object):
         assembles readings dictionary from readings soup
         '''
         litcal = {
-            'CALENDAR_DAY': '',
-            'LITURGICAL_DAY': '',
+            'title': '',
+            'text': ''
         }
         headings = soup.find_all("h3")
         for heading in headings:
             if 'Lectionary' in heading.text:
-                litcal['CALENDAR_DAY'] = soup.title.string
-                litcal['LITURGICAL_DAY'] = heading.text.split('Lectionary')[0]
+
+                litcal['title'] = soup.title.string
+                litcal['text'] = heading.text.split('Lectionary')[0]
         return litcal
 
-    def get_context(self, localtime):
+    def get_record(self, localtime):
         '''
         returns a context json of the current liturgical date
         '''
         readings_url = self._get_readings_url(localtime)
         readings_soup = self._get_page_soup(readings_url)
-        litcal_context = self._assemble_litcal_dict(readings_soup)
-        return litcal_context
+        litcal_record = self._assemble_litcal_dict(readings_soup)
+        return litcal_record
 
 
 def home(request):
     usccb = USCCB()
-    context = usccb.get_context(timezone.localtime())
-    return render(request, 'litcal/home.html', context)
+    record = usccb.get_record(timezone.localtime())
+
+    context = {
+        'app_full_name': APP_FULL_NAME,
+        'icon_filename': ICON_FILENAME,
+        'record': record
+    }
+
+    return render(request, 'home/details.html', context)
