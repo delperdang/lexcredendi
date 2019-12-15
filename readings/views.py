@@ -6,7 +6,9 @@ from dateutil import tz
 from bs4 import BeautifulSoup
 
 # Create your views here.
-
+APP_NAME = 'readings'
+APP_FULL_NAME = 'Daily Readings'
+ICON_FILENAME = 'deacon.svg'
 
 class USCCB(object):
     '''
@@ -39,34 +41,45 @@ class USCCB(object):
         '''
         assembles readings dictionary from readings soup
         '''
-        readings = {
-            'READING_1_TITLE': '',
-            'READING_1_TEXT': '',
-            'READING_1_LINK': '',
-            'READING_2_TITLE': '',
-            'READING_2_TEXT': '',
-            'READING_2_LINK': '',
-            'GOSPEL_TITLE': '',
-            'GOSPEL_TEXT': '',
-            'GOSPEL_LINK': ''
-        }
+        readings = []
         headings = soup.find_all("h4")
         for heading in headings:
             if 'READING 1' in heading.text.upper():
-                readings['READING_1_TITLE'] = 'Reading 1'
-                readings['READING_1_TEXT'] = heading.a.text
-                readings['READING_1_LINK'] = self.USCCB_ROOT + heading.a.get('href')
+                temp_link = self.USCCB_ROOT + heading.a.get('href')
+                temp_citation = heading.a.text
+                temp_title = 'Reading 1'
+                temp_text = '<a href="{}">{}</a>'.format(temp_link, temp_citation)
+                readings.append(
+                    {
+                        'title': temp_title,
+                        'text': temp_text,
+                    }
+                )
             if 'READING 2' in heading.text.upper():
-                readings['READING_2_TITLE'] = 'Reading 2'
-                readings['READING_2_TEXT'] = heading.a.text
-                readings['READING_2_LINK'] = self.USCCB_ROOT + heading.a.get('href')
+                temp_link = self.USCCB_ROOT + heading.a.get('href')
+                temp_citation = heading.a.text
+                temp_title = 'Reading 2'
+                temp_text = '<a href="{}">{}</a>'.format(temp_link, temp_citation)
+                readings.append(
+                    {
+                        'title': temp_title,
+                        'text': temp_text,
+                    }
+                )
             if 'GOSPEL' in heading.text.upper():
-                readings['GOSPEL_TITLE'] = 'Gospel'
-                readings['GOSPEL_TEXT'] = heading.a.text
-                readings['GOSPEL_LINK'] = self.USCCB_ROOT + heading.a.get('href')
+                temp_link = self.USCCB_ROOT + heading.a.get('href')
+                temp_citation = heading.a.text
+                temp_title = 'Gospel'
+                temp_text = '<a href="{}">{}</a>'.format(temp_link, temp_citation)
+                readings.append(
+                    {
+                        'title': temp_title,
+                        'text': temp_text,
+                    }
+                )
         return readings
 
-    def _extract_audio_url(self, soup, local_now):
+    def _extract_audio(self, soup, local_now):
         '''
         extracts audio url for current readings mp3
         '''
@@ -77,22 +90,33 @@ class USCCB(object):
             pub_date = dparser.parse(item.pubdate.text, ignoretz=True).date()
             if local_now_date == pub_date:
                 url = item.enclosure.get('url')
-        return url
+        audio = {
+            'title': 'Complete Audio',
+            'text': '<a href="{}">{}</a>'.format(url, 'Click to play')
+        }
+        return audio
 
-    def get_context(self, localtime):
+    def get_records(self, localtime):
         '''
         returns a context json of the current readings and audio
         '''
         readings_url = self._get_readings_url(localtime)
         readings_soup = self._get_page_soup(readings_url)
         audio_soup = self._get_page_soup(self.USCCB_AUDIO)
-        readings_context = self._assemble_readings_dict(readings_soup)
-        audio_url = self._extract_audio_url(audio_soup, localtime)
-        readings_context['AUDIO_URL'] = audio_url
-        return readings_context
+        readings_records = self._assemble_readings_dict(readings_soup)
+        audio_record = self._extract_audio(audio_soup, localtime)
+        readings_records.append(audio_record)
+        return readings_records
 
 
 def home(request):
     usccb = USCCB()
-    context = usccb.get_context(timezone.localtime())
+    records = usccb.get_records(timezone.localtime())
+
+    context = {
+        'app_full_name': APP_FULL_NAME,
+        'icon_filename': ICON_FILENAME,
+        'records': records
+    }
+
     return render(request, 'readings/home.html', context)
