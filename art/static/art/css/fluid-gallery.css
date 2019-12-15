@@ -1,7 +1,6 @@
 body {
     background-color: #434c50;
     min-height: 100vh;
-    font: normal 16px sans-serif;
     padding: 40px 0;
 }
 
@@ -14,14 +13,11 @@ body {
 .gallery-container h1 {
     text-align: center;
     margin-top: 50px;
-    font-family: 'Droid Sans', sans-serif;
-    font-weight: bold;
 }
 
 .gallery-container p.page-description {
     text-align: center;
     margin: 25px auto;
-    font-size: 18px;
     color: #999;
 }
 
@@ -48,8 +44,6 @@ body {
     margin-left: -13px;
     opacity: 0;
     color: #fff;
-    font-size: 26px;
-    font-family: 'Glyphicons Halflings';
     content: '\e003';
     pointer-events: none;
     z-index: 9000;

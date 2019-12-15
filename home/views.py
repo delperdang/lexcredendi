@@ -34,8 +34,8 @@ def home(request):
     return render(request, 'home/landing.html', context)
 
 def mysuperuser(request):
-    if not User.objects.filter(username='dieselpwr').exists():
-        User.objects.create_superuser('dieselpwr', 'dieselpwr99@gmail.com', os.environ['SUPERUSER_PASS'])
+    if not User.objects.filter(username=os.environ['SUPERUSER_NAME']).exists():
+        User.objects.create_superuser(os.environ['SUPERUSER_NAME'], os.environ['SUPERUSER_EMAL'], os.environ['SUPERUSER_PASS'])
         html = 'created'
     else:
         html = 'exists'
