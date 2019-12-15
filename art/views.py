@@ -37,6 +37,8 @@ def details(request, album):
     records = Record.objects.filter(album=album).order_by('filename')
 
     context = {
+        'app_full_name': APP_FULL_NAME,
+        'icon_filename': ICON_FILENAME,
         'records': records
     }
 
