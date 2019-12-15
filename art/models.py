@@ -7,7 +7,7 @@ class Record(models.Model):
     filename = models.CharField(_('Filename'), max_length=255, primary_key=True)
     title = models.CharField(_('Title'), max_length=255)
     album = models.CharField(_('Album'), max_length=255)
-    album_title = models.CharField(_('Album Title'), max_length=255, default='Test')
+    album_title = models.CharField(_('Album Title'), max_length=255)
     def __str__(self):
         return ('{}').format(self.title)
     class Meta:
