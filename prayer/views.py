@@ -27,4 +27,4 @@ def details(request, code):
         'record': record
     }
 
-    return render(request, 'home/details.html', context)
+    return render(request, 'prayer/details.html', context)
