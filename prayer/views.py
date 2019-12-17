@@ -13,7 +13,8 @@ def home(request):
         'app_name': APP_NAME,
         'app_full_name': APP_FULL_NAME,
         'icon_filename': ICON_FILENAME,
-        'records': records
+        'records': records,
+        'searchable': True
     }
 
     return render(request, 'home/home.html', context)
