@@ -15,11 +15,11 @@
   }
   
   .circle:nth-child(odd) {
-    background: #61bea2;
+    background: #FFBD03;
   }
   
   .circle:nth-child(even) {
-    background: #b19cd9;
+    background: #920909;
   }
   
   .circle:nth-child(1) {
