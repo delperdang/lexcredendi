@@ -15,7 +15,7 @@ class USCCB(object):
     Captures the latest daily readings text and audio from the USCCB
     '''
     # USCCB URL constants
-    USCCB_ROOT = 'http://www.usccb.org'
+    USCCB_ROOT = 'http://www.usccb.org/'
     USCCB_READINGS = 'http://www.usccb.org/bible/readings/{}.cfm'
     USCCB_AUDIO = 'http://ccc.usccb.org/cccradio/NABPodcasts/nab_feed.xml'
 
@@ -45,7 +45,10 @@ class USCCB(object):
         headings = soup.find_all("h4")
         for heading in headings:
             if 'READING 1' in heading.text.upper():
-                temp_link = self.USCCB_ROOT + heading.a.get('href')
+                if heading.a.get('href', '').startswith('http'):
+                    temp_link = heading.a.get('href')
+                else:
+                    temp_link = self.USCCB_ROOT + heading.a.get('href')
                 temp_citation = heading.a.text
                 temp_title = 'Reading 1'
                 temp_text = '<a href="{}">{}</a>'.format(temp_link, temp_citation)
@@ -56,6 +59,9 @@ class USCCB(object):
                     }
                 )
             if 'READING 2' in heading.text.upper():
+                if heading.a.get('href', '').startswith('http'):
+                    temp_link = heading.a.get('href')
+                else:
                 temp_link = self.USCCB_ROOT + heading.a.get('href')
                 temp_citation = heading.a.text
                 temp_title = 'Reading 2'
@@ -67,6 +73,9 @@ class USCCB(object):
                     }
                 )
             if 'GOSPEL' in heading.text.upper():
+                if heading.a.get('href', '').startswith('http'):
+                    temp_link = heading.a.get('href')
+                else:
                 temp_link = self.USCCB_ROOT + heading.a.get('href')
                 temp_citation = heading.a.text
                 temp_title = 'Gospel'
