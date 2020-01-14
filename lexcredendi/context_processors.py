@@ -14,19 +14,19 @@ christmas = date(timezone.localtime().year, 12, 25)
 def environ_vars(request):
     data = {}
     if timezone.localtime().date() < baptism_of_our_lord:
-        data['SEASONAL_COLOR'] = 'bg-gold'
+        data['SEASONAL_COLOR'] = 'bg-christmas-gold'
     elif timezone.localtime().date() >= baptism_of_our_lord and timezone.localtime().date() < ash_wednesday:
-        data['SEASONAL_COLOR'] = 'bg-success'
+        data['SEASONAL_COLOR'] = 'bg-ordinary-green'
     elif timezone.localtime().date() >= ash_wednesday and timezone.localtime().date() < maundy_thursday:
-        data['SEASONAL_COLOR'] = 'bg-purple'
+        data['SEASONAL_COLOR'] = 'bg-lent-purple'
     elif timezone.localtime().date() >= maundy_thursday and timezone.localtime().date() < easter(timezone.localtime().year):
-        data['SEASONAL_COLOR'] = 'bg-danger'
+        data['SEASONAL_COLOR'] = 'bg-triduum-red'
     elif timezone.localtime().date() >= easter(timezone.localtime().year) and timezone.localtime().date() < pentecost:
-        data['SEASONAL_COLOR'] = 'bg-gold'
+        data['SEASONAL_COLOR'] = 'bg-easter-gold'
     elif timezone.localtime().date() >= pentecost and timezone.localtime().date() < first_sunday_of_advent:
-        data['SEASONAL_COLOR'] = 'bg-success'
+        data['SEASONAL_COLOR'] = 'bg-ordinary-green'
     elif timezone.localtime().date() >= first_sunday_of_advent and timezone.localtime().date() < christmas:
-        data['SEASONAL_COLOR'] = 'bg-purple'
+        data['SEASONAL_COLOR'] = 'bg-advent-purple'
     elif timezone.localtime().date() >= christmas:
-        data['SEASONAL_COLOR'] = 'bg-gold'
+        data['SEASONAL_COLOR'] = 'bg-christmas-gold'
     return data
