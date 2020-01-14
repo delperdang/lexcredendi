@@ -62,7 +62,7 @@ class USCCB(object):
                 if heading.a.get('href', '').startswith('http'):
                     temp_link = heading.a.get('href')
                 else:
-                temp_link = self.USCCB_ROOT + heading.a.get('href')
+                    temp_link = self.USCCB_ROOT + heading.a.get('href')
                 temp_citation = heading.a.text
                 temp_title = 'Reading 2'
                 temp_text = '<a href="{}">{}</a>'.format(temp_link, temp_citation)
@@ -76,7 +76,7 @@ class USCCB(object):
                 if heading.a.get('href', '').startswith('http'):
                     temp_link = heading.a.get('href')
                 else:
-                temp_link = self.USCCB_ROOT + heading.a.get('href')
+                    temp_link = self.USCCB_ROOT + heading.a.get('href')
                 temp_citation = heading.a.text
                 temp_title = 'Gospel'
                 temp_text = '<a href="{}">{}</a>'.format(temp_link, temp_citation)
