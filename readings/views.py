@@ -47,7 +47,7 @@ class USCCB(object):
             if 'READING 1' in heading.text.upper():
                 if heading.a.get('href', '').startswith('http'):
                     temp_link = heading.a.get('href')
-                elif heading.a.get('href', '').endswith('/'):
+                elif heading.a.get('href', '').startswith('/'):
                     temp_link = self.USCCB_ROOT + heading.a.get('href')
                 else:
                     temp_link = self.USCCB_ROOT + '/' + heading.a.get('href')
@@ -63,7 +63,7 @@ class USCCB(object):
             if 'READING 2' in heading.text.upper():
                 if heading.a.get('href', '').startswith('http'):
                     temp_link = heading.a.get('href')
-                elif heading.a.get('href', '').endswith('/'):
+                elif heading.a.get('href', '').startswith('/'):
                     temp_link = self.USCCB_ROOT + heading.a.get('href')
                 else:
                     temp_link = self.USCCB_ROOT + '/' + heading.a.get('href')
@@ -79,7 +79,7 @@ class USCCB(object):
             if 'GOSPEL' in heading.text.upper():
                 if heading.a.get('href', '').startswith('http'):
                     temp_link = heading.a.get('href')
-                elif heading.a.get('href', '').endswith('/'):
+                elif heading.a.get('href', '').startswith('/'):
                     temp_link = self.USCCB_ROOT + heading.a.get('href')
                 else:
                     temp_link = self.USCCB_ROOT + '/' + heading.a.get('href')
