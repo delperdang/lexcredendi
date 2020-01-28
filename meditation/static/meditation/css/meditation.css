@@ -2,6 +2,10 @@
     overflow: hidden; /* Hide scrollbars */
   }
 
+  .main {
+    overflow: hidden; /* Hide scrollbars */
+  }
+
   .watch-face {
     height: 125px;
     width: 125px;
