@@ -1,8 +1,11 @@
-   .watch-face {
+.main {
+  overflow: hidden; /* Hide scrollbars */
+}
+
+  .watch-face {
     height: 125px;
     width: 125px;
     animation: pulse 4s cubic-bezier(0.5, 0, 0.5, 1) alternate infinite;
-    overflow: hidden; /* Hide scrollbars */
   }
   
   .circle {
