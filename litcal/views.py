@@ -102,7 +102,7 @@ class USCCBIntentions(object):
         for heading in headings:
             if month == heading.text.upper():
                 next_p = heading.find_next_sibling("p")
-                intention['text'] = next_p
+                intention['text'] = next_p.text.replace("\n", ": ")
         return intention
 
     def get_record(self, localtime):
@@ -197,12 +197,12 @@ def home(request):
     usccb_calendar = USCCBCalendar()
     usccb_calendar_record = usccb_calendar.get_record(timezone.localtime())
     records.append(usccb_calendar_record)
-    usccb_intentions = USCCBIntentions()
-    usccb_intentions_record = usccb_intentions.get_record(timezone.localtime())
-    records.append(usccb_intentions_record)
     mysteries = Mysteries()
     mysteries_record = mysteries.get_record(timezone.localtime())
     records.append(mysteries_record)
+    usccb_intentions = USCCBIntentions()
+    usccb_intentions_record = usccb_intentions.get_record(timezone.localtime())
+    records.append(usccb_intentions_record)
 
     context = {
         'app_full_name': APP_FULL_NAME,
