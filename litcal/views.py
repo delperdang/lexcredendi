@@ -67,6 +67,54 @@ class USCCBCalendar(object):
         return litcal_record
 
 
+class USCCBIntentions(object):
+    '''
+    captures the latest list of intentions from the holy Father by month from the usccb
+    '''
+
+    # USCCB URL constants
+    USCCB_INTENTIONS = 'http://www.usccb.org/prayer-and-worship/prayers-and-devotions/the-popes-monthly-intention.cfm'
+
+    def _get_upper_month(self, local_now):
+        '''
+        returns the current day of week spelled out and uppercased
+        '''
+        month = local_now.date().strftime("%B").upper()
+        return month
+
+    def _get_page_soup(self, url, parser='html.parser'):
+        '''
+        retrieves web page soup for analysis
+        '''
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, features=parser)
+        return soup
+
+    def _assemble_intentions_dict(self, soup, month):
+        '''
+        assembles readings dictionary from readings soup
+        '''
+        intention = {
+            'title': "This Month's Papal Intentions",
+            'text': ''
+        }
+        headings = soup.find_all("h4")
+        for heading in headings:
+            if month == heading.text.upper():
+                next_p = heading.find_next_sibling("p")
+                intention['text'] = next_p
+        return intention
+
+    def get_record(self, localtime):
+        '''
+        returns a context json of the current liturgical date
+        '''
+        month_string = self._get_upper_month(localtime)
+        intentions_soup = self._get_page_soup(self.USCCB_INTENTIONS)
+        intentions_record = self._assemble_intentions_dict(soup=intentions_soup, month=month_string)
+        return intentions_record
+
+
 class Mysteries(object):
     '''
     Determines the appropriate mysteries of the Rosary for the given day and season
@@ -149,6 +197,9 @@ def home(request):
     usccb_calendar = USCCBCalendar()
     usccb_calendar_record = usccb_calendar.get_record(timezone.localtime())
     records.append(usccb_calendar_record)
+    usccb_intentions = USCCBIntentions()
+    usccb_intentions_record = usccb_intentions.get_record(timezone.localtime())
+    records.append(usccb_intentions_record)
     mysteries = Mysteries()
     mysteries_record = mysteries.get_record(timezone.localtime())
     records.append(mysteries_record)
