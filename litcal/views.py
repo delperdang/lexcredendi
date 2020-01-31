@@ -77,9 +77,9 @@ class USCCBIntentions(object):
 
     def _get_month(self, local_now):
         '''
-        returns the current day of week spelled out and uppercased
+        returns the current day of week spelled out
         '''
-        month = local_now.date().strftime("%B").upper()
+        month = local_now.date().strftime("%B")
         return month
 
     def _get_page_soup(self, url, parser='html.parser'):
@@ -98,8 +98,12 @@ class USCCBIntentions(object):
             'title': "This Month's Papal Intentions",
             'text': ''
         }
-        next_p = soup.find(text=month).parent.find_next_sibling("p")
-        intention['text'] = next_p.text.replace("\n", ": ")
+        month_heading = soup.find(text=month)
+        if bool(month_heading):
+            next_p = month_heading.parent.find_next_sibling("p")
+            intention['text'] = next_p.text.replace("\n", ": ")
+        else:
+            intention = {}
         return intention
 
     def get_record(self, localtime):
