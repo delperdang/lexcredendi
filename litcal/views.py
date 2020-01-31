@@ -75,7 +75,7 @@ class USCCBIntentions(object):
     # USCCB URL constants
     USCCB_INTENTIONS = 'http://www.usccb.org/prayer-and-worship/prayers-and-devotions/the-popes-monthly-intention.cfm'
 
-    def _get_upper_month(self, local_now):
+    def _get_month(self, local_now):
         '''
         returns the current day of week spelled out and uppercased
         '''
@@ -98,18 +98,15 @@ class USCCBIntentions(object):
             'title': "This Month's Papal Intentions",
             'text': ''
         }
-        headings = soup.find_all("h4")
-        for heading in headings:
-            if month == heading.text.upper():
-                next_p = heading.find_next_sibling("p")
-                intention['text'] = next_p.text.replace("\n", ": ")
+        next_p = soup.find(text=month).parent.find_next_sibling("p")
+        intention['text'] = next_p.text.replace("\n", ": ")
         return intention
 
     def get_record(self, localtime):
         '''
         returns a context json of the current liturgical date
         '''
-        month_string = self._get_upper_month(localtime)
+        month_string = self._get_month(localtime)
         intentions_soup = self._get_page_soup(self.USCCB_INTENTIONS)
         intentions_record = self._assemble_intentions_dict(soup=intentions_soup, month=month_string)
         return intentions_record
