@@ -4,3 +4,4 @@ django-tz-detect
 mysqlclient
 python-dateutil
 requests
+django-import-export

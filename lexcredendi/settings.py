@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tz_detect',
+    'import_export',
     'home',
     'apologetics',
     'art',
