@@ -42,7 +42,7 @@ class USCCB(object):
         assembles readings dictionary from readings soup
         '''
         readings = []
-        headings = soup.find_all("h4")
+        headings = soup.find_all('div', {'class': 'content-header'})
         for heading in headings:
             if 'READING 1' in heading.text.upper():
                 if heading.a.get('href', '').startswith('http'):
