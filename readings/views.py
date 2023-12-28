@@ -143,4 +143,4 @@ def home(request):
         'records': records
     }
 
-    return render(request, 'readings/home.html', context)
+    return render(request, 'home/scraped_home.html', context)
