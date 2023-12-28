@@ -7,3 +7,6 @@
 # misc file types
 *.pyc
 *.sqlite3
+
+# static files
+static
