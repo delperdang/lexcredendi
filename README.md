@@ -4,7 +4,7 @@ This is a simple Django 3 project configured to be deployed on AWS with a MySQL 
 
 ## Features
 
-- Django 3
+- Django web framework
 - MySQL database support with mysqlclient
 - Web Scraping with beautifulsoup4 for calendar and readings
 - Automatic timezone detection thanks to django-tz-detect
