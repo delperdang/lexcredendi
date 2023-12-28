@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.db.models import Q
 from doctrine.models import Record
 
-# Create your views here.
+
 APP_NAME = 'doctrine'
 APP_FULL_NAME = 'Doctrinal Formulae'
 ICON_FILENAME = 'pope.svg'

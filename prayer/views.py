@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.db.models import Q
 from prayer.models import Record
 
-# Create your views here.
+
 APP_NAME = 'prayer'
 APP_FULL_NAME = 'Prayer Texts'
 ICON_FILENAME = 'priest.svg'

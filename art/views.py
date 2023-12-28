@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from art.models import Record
 
-# Create your views here.
+
 APP_NAME = 'art'
 APP_FULL_NAME = 'Sacred Art'
 ICON_FILENAME = 'eastern_cross.svg'

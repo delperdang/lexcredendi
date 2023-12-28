@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.db.models import Q
 from piety.models import Record
 
-# Create your views here.
+
 APP_NAME = 'piety'
 APP_FULL_NAME = 'Personal Piety'
 ICON_FILENAME = 'cspb.svg'

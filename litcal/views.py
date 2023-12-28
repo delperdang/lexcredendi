@@ -9,7 +9,7 @@ from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
 from dateutil import tz
 from bs4 import BeautifulSoup
 
-# Create your views here.
+
 APP_NAME = 'litcal'
 APP_FULL_NAME = 'Liturgical Calendar'
 ICON_FILENAME = 'cathedral.svg'

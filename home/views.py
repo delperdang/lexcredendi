@@ -5,7 +5,6 @@ from django.http import HttpResponse
 from django.utils import timezone
 import requests
 
-# Create your views here.
 
 def fetch_updates():
     '''

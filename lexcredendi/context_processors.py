@@ -1,8 +1,9 @@
-from django.utils import timezone
 from datetime import date
+from django.utils import timezone
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
+
 
 baptism_of_our_lord = date(timezone.localtime().year, 1, 6) + rd(days=1, weekday=SU(+1))
 ash_wednesday = easter(timezone.localtime().year) - rd(days=46)

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.db.models import Q
 from apologetics.models import Record
 
-# Create your views here.
+
 APP_NAME = 'apologetics'
 APP_FULL_NAME = 'Apologetics Guide'
 ICON_FILENAME = 'bishop.svg'

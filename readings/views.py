@@ -6,7 +6,7 @@ from dateutil.parser._parser import ParserError
 from dateutil import tz
 from bs4 import BeautifulSoup
 
-# Create your views here.
+
 APP_NAME = 'readings'
 APP_FULL_NAME = 'Daily Readings'
 ICON_FILENAME = 'deacon.svg'

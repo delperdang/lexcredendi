@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext as _
 
-# Create your models here.
 
 class Record(models.Model):
     title = models.CharField(_('Title'), max_length=255)
