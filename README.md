@@ -21,21 +21,32 @@ $ pip install -r requirements.txt
 
 ## Environment variables
 
-These are necessary to run the web app and automatically configure a superuser.
+These evironment variables are necessary to run the web app and automatically configure a superuser.
 
 ```
 SECRET_KEY='foo'
 SUPERUSER_PASS='bar'
 SUPERUSER_NAME='spam'
 SUPERUSER_EMAL='eggs'
-RDS_HOSTNAME='ham'
 ```
 
-These settings are explicitly altered based on debug value and host.
+These environment variables are necessary to deploy successfully on AWS Elastic Beanstalk using RDS.
 
 ```
-urlpatterns
-location.protocol
+RDS_HOSTNAME='foo'
+RDS_DB_NAME='barr'
+RDS_USERNAME='spam'
+RDS_PASSWORD='eggs'
+RDS_PORT='trad'
+```
+
+These settings are explicitly altered based on the host environment and by proxy the `DEBUG` value.
+
+```
+settings.py DEBUG
+settings.py DATABASES
+urls.py urlpatterns
+offcanvas.js location.protocol
 ```
 
 ## Deployment

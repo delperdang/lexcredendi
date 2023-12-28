@@ -103,7 +103,7 @@ DATABASES = {
     }
 }
 
-if 'RDS_HOSTNAME' in os.environ:
+if DEBUG == False:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
