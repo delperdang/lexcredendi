@@ -1,12 +1,10 @@
+# Django Files
+*.pyc
+*.sqlite3
+*/migrations/*.py
+media
 
-# Elastic Beanstalk Files
+# AWS Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
-
-# misc file types
-*.pyc
-*.sqlite3
-
-# media files
-media
