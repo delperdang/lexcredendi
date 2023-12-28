@@ -1,6 +1,6 @@
 # LexCredendi
 
-This is a simple Django 3 project configured to be deployed on AWS Elastic Beanstalk with a MySQL RDS instance. The function of this web app is to provide quick access to prayers, apologetics, readings and more to support Catholic users.
+This is a simple Django 3 project configured to be deployed on AWS with a MySQL RDS instance. The function of this web app is to provide quick access to prayers, apologetics, readings and more to support Catholic users.
 
 ## Features
 
@@ -51,9 +51,9 @@ offcanvas.js location.protocol
 
 ## Deployment
 
-It is possible to deploy to AWS Elastic Beanstalk or to your own server.
+It is possible to deploy to AWS or to your own server.
 
-### Elastic Beanstalk
+### AWS
 
 ```bash
 $ eb init
