@@ -34,7 +34,7 @@ def home(request):
     return render(request, 'home/home.html', context)
 
 def details(request, album):
-    records = Record.objects.filter(album=album).order_by('filename')
+    records = Record.objects.filter(album=album).order_by('image')
 
     context = {
         'app_full_name': APP_FULL_NAME,

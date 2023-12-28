@@ -5,3 +5,4 @@ mysqlclient
 python-dateutil
 requests
 django-import-export
+Pillow

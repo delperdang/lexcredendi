@@ -8,5 +8,5 @@
 *.pyc
 *.sqlite3
 
-# static files
-static
+# media files
+media

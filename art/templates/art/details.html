@@ -22,8 +22,8 @@
 
                 {% for record in records %}
                 <div class="col-sm-12 col-md-4">
-                    <a class="lightbox" href="{% static 'art/img/' %}{{ record.filename }}">
-                        <img src="{% static 'art/img/' %}{{ record.filename }}" alt="{{ record.title }}">
+                    <a class="lightbox" href="{{ record.image.url }}">
+                        <img src="{{ record.image.url }}" alt="{{ record.title }}">
                     </a>
                 </div>
                 {% endfor %}
