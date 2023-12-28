@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.utils import timezone
 import requests
 import dateutil.parser as dparser
+from dateutil.parser._parser import ParserError
 from dateutil import tz
 from bs4 import BeautifulSoup
 
@@ -102,9 +103,17 @@ class USCCB(object):
         local_now_date = local_now.date()
         items = soup.findAll('item')
         for item in items:
-            pub_date = dparser.parse(item.pubdate.text, ignoretz=True).date()
-            if local_now_date == pub_date:
-                url = item.enclosure.get('url')
+            title_text = item.title.text
+            title_text_date_left = title_text.split('For ')[-1].split(',')[0]
+            title_text_date_right = title_text.split(',')[-1][0:5]
+            title_text_date = "{},{}".format(title_text_date_left,title_text_date_right) 
+            try:
+                title_date = dparser.parse(title_text_date, ignoretz=True).date()
+                if local_now_date == title_date:
+                    url = item.enclosure.get('url')
+            except ParserError as err:
+                # TODO: figure out a better way to parse dates from RSS feed
+                print(err)
         audio = {
             'title': 'Complete Audio',
             'text': '<a href="{}">{}</a>'.format(url, 'Click to play')
