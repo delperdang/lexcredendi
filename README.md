@@ -51,7 +51,7 @@ offcanvas.js location.protocol
 
 ## Deployment
 
-It is possible to deploy to AWS or to your own server.
+It is possible to deploy to AWS or to your own server with a few adjustments.
 
 ### AWS
 
@@ -59,16 +59,6 @@ It is possible to deploy to AWS or to your own server.
 $ eb init
 $ eb create lexcredendi-env
 $ eb deploy
-```
-
-## Cleanup
-
-The following terminal commands will effectively clean up your environment between tests in Linux
-
-bash```
-$ find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
-$ find . -path "*/migrations/*.pyc"  -delete
-$ find . -path "*/__pycache__/*.pyc" -delete
 ```
 
 ## License

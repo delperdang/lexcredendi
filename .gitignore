@@ -1,7 +1,6 @@
 # Django Files
 *.pyc
 *.sqlite3
-*/migrations/*.py
 media
 
 # AWS Files
