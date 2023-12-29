@@ -49,12 +49,12 @@ class USCCBCalendar(object):
             'title': '',
             'text': ''
         }
-        headings = soup.find_all("h3")
-        for heading in headings:
-            if 'Lectionary' in heading.text:
-
-                litcal['title'] = soup.title.string
-                litcal['text'] = heading.text.split('Lectionary')[0]
+        title = soup.find("meta", property="og:title")
+        paragraphs = soup.find_all("p")
+        for paragraph in paragraphs:
+            if 'Lectionary:' in paragraph.text:
+                litcal['title'] = title.get("content", None)
+                litcal['text'] = paragraph.text
         return litcal
 
     def get_record(self, localtime):
