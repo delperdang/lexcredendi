@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'home',
     'apologetics',
     'art',
+    'bible',
+    'catechism',
     'doctrine',
     'litcal',
     'meditation',

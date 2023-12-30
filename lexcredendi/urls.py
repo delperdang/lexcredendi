@@ -15,6 +15,8 @@ urlpatterns = [
     path('', include('home.urls')),
     path('apologetics/', include('apologetics.urls')),
     path('art/', include('art.urls')),
+    path('bible/', include('bible.urls')),
+    path('catechism/', include('catechism.urls')),
     path('doctrine/', include('doctrine.urls')),
     path('litcal/', include('litcal.urls')),
     path('meditation/', include('meditation.urls')),
