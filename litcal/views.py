@@ -122,7 +122,7 @@ class Mysteries(object):
     '''
 
     # Rosary Mysteries constants
-    JOYFUL = {'title': "Today's Mysteries of the Rosary", 'text': '<a href="https://www.usccb.org/prayers/rosary-life-joyful-mysteriesL">Joyful Mysteries</a>'}
+    JOYFUL = {'title': "Today's Mysteries of the Rosary", 'text': '<a href="https://www.usccb.org/prayers/rosary-life-joyful-mysteries">Joyful Mysteries</a>'}
     SORROWFUL = {'title': "Today's Mysteries of the Rosary", 'text': '<a href="https://www.usccb.org/prayers/rosary-life-sorrowful-mysteries">Sorrowful Mysteries</a>'}
     GLORIOUS = {'title': "Today's Mysteries of the Rosary", 'text': '<a href="https://www.usccb.org/prayers/rosary-life-glorious-mysteries">Glorious Mysteries</a>'}
     LUMINOUS = {'title': "Today's Mysteries of the Rosary", 'text': '<a href="https://www.usccb.org/prayers/rosary-life-luminous-mysteries">Luminous Mysteries</a>'}
