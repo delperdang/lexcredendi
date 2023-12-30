@@ -122,10 +122,10 @@ class Mysteries(object):
     '''
 
     # Rosary Mysteries constants
-    JOYFUL_MYSTERIES = {'title': "Today's Mysteries of the Rosary", 'text': '<a href="/doctrine/details/JOYFUL_MYSTERIES">Joyful Mysteries</a>'}
-    SORROWFUL_MYSTERIES = {'title': "Today's Mysteries of the Rosary", 'text': '<a href="/doctrine/details/SORROWFUL_MYSTERIES">Sorrowful Mysteries</a>'}
-    GLORIOUS_MYSTERIES = {'title': "Today's Mysteries of the Rosary", 'text': '<a href="/doctrine/details/GLORIOUS_MYSTERIES">Glorious Mysteries</a>'}
-    LUMINOUS_MYSTERIES = {'title': "Today's Mysteries of the Rosary", 'text': '<a href="/doctrine/details/LUMINOUS_MYSTERIES">Luminous Mysteries</a>'}
+    JOYFUL = {'title': "Today's Mysteries of the Rosary", 'text': '<a href="/doctrine/details/JOYFUL">Joyful Mysteries</a>'}
+    SORROWFUL = {'title': "Today's Mysteries of the Rosary", 'text': '<a href="/doctrine/details/SORROWFUL">Sorrowful Mysteries</a>'}
+    GLORIOUS = {'title': "Today's Mysteries of the Rosary", 'text': '<a href="/doctrine/details/GLORIOUS">Glorious Mysteries</a>'}
+    LUMINOUS = {'title': "Today's Mysteries of the Rosary", 'text': '<a href="/doctrine/details/LUMINOUS">Luminous Mysteries</a>'}
 
     def _get_season(self, local_now):
         '''
@@ -171,25 +171,25 @@ class Mysteries(object):
         dow_string = self._get_upper_day_of_week(localtime)
         rosary_record = {}
         if dow_string == 'SUNDAY' and season_string == 'ADVENT':
-            rosary_record = self.JOYFUL_MYSTERIES
+            rosary_record = self.JOYFUL
         elif dow_string == 'SUNDAY' and season_string == 'LENT':
-            rosary_record = self.SORROWFUL_MYSTERIES
+            rosary_record = self.SORROWFUL
         elif dow_string == 'SUNDAY' and season_string == 'TRIDUUM':
-            rosary_record = self.SORROWFUL_MYSTERIES
+            rosary_record = self.SORROWFUL
         elif dow_string == 'SUNDAY':
-            rosary_record = self.GLORIOUS_MYSTERIES
+            rosary_record = self.GLORIOUS
         elif dow_string == 'MONDAY':
-            rosary_record = self.JOYFUL_MYSTERIES
+            rosary_record = self.JOYFUL
         elif dow_string == 'TUESDAY':
-            rosary_record = self.SORROWFUL_MYSTERIES
+            rosary_record = self.SORROWFUL
         elif dow_string == 'WEDNESDAY':
-            rosary_record = self.GLORIOUS_MYSTERIES
+            rosary_record = self.GLORIOUS
         elif dow_string == 'THURSDAY':
-            rosary_record = self.LUMINOUS_MYSTERIES
+            rosary_record = self.LUMINOUS
         elif dow_string == 'FRIDAY':
-            rosary_record = self.SORROWFUL_MYSTERIES
+            rosary_record = self.SORROWFUL
         elif dow_string == 'SATURDAY':
-            rosary_record = self.JOYFUL_MYSTERIES
+            rosary_record = self.JOYFUL
         return rosary_record
 
 
