@@ -122,10 +122,10 @@ class Mysteries(object):
     '''
 
     # Rosary Mysteries constants
-    JOYFUL = {'title': "Today's Mysteries of the Rosary", 'text': '<a href="/doctrine/details/JOYFUL">Joyful Mysteries</a>'}
-    SORROWFUL = {'title': "Today's Mysteries of the Rosary", 'text': '<a href="/doctrine/details/SORROWFUL">Sorrowful Mysteries</a>'}
-    GLORIOUS = {'title': "Today's Mysteries of the Rosary", 'text': '<a href="/doctrine/details/GLORIOUS">Glorious Mysteries</a>'}
-    LUMINOUS = {'title': "Today's Mysteries of the Rosary", 'text': '<a href="/doctrine/details/LUMINOUS">Luminous Mysteries</a>'}
+    JOYFUL = {'title': "Today's Mysteries of the Rosary", 'text': '<a href="https://www.usccb.org/prayers/rosary-life-joyful-mysteriesL">Joyful Mysteries</a>'}
+    SORROWFUL = {'title': "Today's Mysteries of the Rosary", 'text': '<a href="https://www.usccb.org/prayers/rosary-life-sorrowful-mysteries">Sorrowful Mysteries</a>'}
+    GLORIOUS = {'title': "Today's Mysteries of the Rosary", 'text': '<a href="https://www.usccb.org/prayers/rosary-life-glorious-mysteries">Glorious Mysteries</a>'}
+    LUMINOUS = {'title': "Today's Mysteries of the Rosary", 'text': '<a href="https://www.usccb.org/prayers/rosary-life-luminous-mysteries">Luminous Mysteries</a>'}
 
     def _get_season(self, local_now):
         '''
