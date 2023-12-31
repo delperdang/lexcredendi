@@ -77,6 +77,22 @@ class USCCB(object):
                         'text': temp_text,
                     }
                 )
+            if 'RESPONSORIAL PSALM' in heading.text.upper():
+                if heading.a.get('href', '').startswith('http'):
+                    temp_link = heading.a.get('href')
+                elif heading.a.get('href', '').startswith('/'):
+                    temp_link = self.USCCB_ROOT + heading.a.get('href')
+                else:
+                    temp_link = self.USCCB_ROOT + '/' + heading.a.get('href')
+                temp_citation = heading.a.text
+                temp_title = 'Responsorial Psalm'
+                temp_text = '<a href="{}">{}</a>'.format(temp_link, temp_citation)
+                readings.append(
+                    {
+                        'title': temp_title,
+                        'text': temp_text,
+                    }
+                )
             if 'GOSPEL' in heading.text.upper():
                 if heading.a.get('href', '').startswith('http'):
                     temp_link = heading.a.get('href')
