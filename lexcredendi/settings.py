@@ -18,6 +18,7 @@ if 'RDS_HOSTNAME' in os.environ:
 
 ALLOWED_HOSTS = [
     'localhost',
+    '127.0.0.1',
     'lexcredendi.com',
     'www.lexcredendi.com',
     'lexcredendi-env.z2gttvymnr.us-east-1.elasticbeanstalk.com',
