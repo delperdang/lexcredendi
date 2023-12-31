@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'doctrine',
     'litcal',
     'meditation',
-    'piety',
     'prayer',
     'readings',
 ]
