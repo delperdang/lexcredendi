@@ -6,4 +6,4 @@ requests
 django-import-export
 Pillow
 gunicorn
-psycopg
+psycopg[binary,pool]
