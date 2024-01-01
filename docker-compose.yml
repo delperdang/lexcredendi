@@ -11,10 +11,10 @@ services:
     volumes:
       - web-django:/usr/src/app
       - web-static:/usr/src/app/static
-      - web-media:/usr/src/app/static
+      - web-media:/usr/src/app/media
     env_file: .env
     environment:
-      PROD: 'true'
+      DEBUG: 'true'
     command: /usr/local/bin/gunicorn docker_django.wsgi:application -w 2 -b :8000
 
   nginx:
@@ -39,4 +39,5 @@ services:
 volumes:
   web-django:
   web-static:
+  web-media:
   pgdata:

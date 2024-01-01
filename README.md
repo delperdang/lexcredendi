@@ -1,12 +1,12 @@
 # LexCredendi
 
-This is a simple Django 3 project configured to be deployed on AWS with a MySQL RDS instance. The function of this web app is to provide quick access to prayers, apologetics, readings and more to support Catholic users.
+This is a simple Django 3 project configured to be deployed to Docker with a PostgreSQL backend. The function of this web app is to provide quick access to prayers, apologetics, readings and more to support Catholic users.
 
 ## Features
 
 - Django web framework
-- MySQL database support with mysqlclient
-- Web Scraping with beautifulsoup4 for calendar and readings
+- PostgreSQL database support with psycopg
+- Web Scraping with Beautiful Soup for calendar and readings
 - Automatic timezone detection thanks to django-tz-detect
 - Context processing of liturgical season using python-dateutil
 - Automatic protocol elevation (HTTP to HTTPS)
@@ -15,7 +15,7 @@ This is a simple Django 3 project configured to be deployed on AWS with a MySQL 
 ## How to install
 
 ```bash
-$ git clone https://github.com/dieselpwr/lexcredendi
+$ git clone https://github.com/delperdang/lexcredendi
 $ pip install -r requirements.txt
 ```
 
