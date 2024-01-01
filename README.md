@@ -30,14 +30,11 @@ SUPERUSER_NAME='spam'
 SUPERUSER_EMAL='eggs'
 ```
 
-These environment variables are necessary to deploy successfully with a non-SQLite backend.
+These environment variables are necessary to deploy successfully with a PostgreSQL backend.
 
 ```
-DB_NAME='foo'
-DB_USER='barr'
-DB_PASSWORD='spam'
-DB_HOST='eggs'
-DB_PORT='trad'
+POSTGRES_USER='spam'
+POSTGRES_PASSWORD='eggs'
 ```
 
 These settings are explicitly altered based on the host environment and by proxy the `DEBUG` value.
