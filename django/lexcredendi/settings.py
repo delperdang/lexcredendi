@@ -12,9 +12,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-if 'PROD' in os.environ:
-    DEBUG = False
+DEBUG = os.getenv('DEBUG', 'False').lower() in ('on', 'true', 'y', 'yes')
 
 ALLOWED_HOSTS = [
     "10.*",
@@ -95,7 +93,7 @@ DATABASES = {
 if DEBUG == False:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'ENGINE': 'django.db.backends.postgresql',
             'NAME': os.environ['DB_NAME'],
             'USER': os.environ['DB_USER'],
             'PASSWORD': os.environ['DB_PASSWORD'],

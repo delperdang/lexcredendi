@@ -5,5 +5,5 @@ python-dateutil
 requests
 django-import-export
 Pillow
-psycopg2
 gunicorn
+psycopg
