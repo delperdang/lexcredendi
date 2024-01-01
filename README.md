@@ -30,14 +30,14 @@ SUPERUSER_NAME='spam'
 SUPERUSER_EMAL='eggs'
 ```
 
-These environment variables are necessary to deploy successfully on AWS Elastic Beanstalk using RDS.
+These environment variables are necessary to deploy successfully with a non-SQLite backend.
 
 ```
-RDS_HOSTNAME='foo'
-RDS_DB_NAME='barr'
-RDS_USERNAME='spam'
-RDS_PASSWORD='eggs'
-RDS_PORT='trad'
+DB_NAME='foo'
+DB_USER='barr'
+DB_PASSWORD='spam'
+DB_HOST='eggs'
+DB_PORT='trad'
 ```
 
 These settings are explicitly altered based on the host environment and by proxy the `DEBUG` value.
@@ -51,14 +51,13 @@ offcanvas.js location.protocol
 
 ## Deployment
 
-It is possible to deploy to AWS or to your own server with a few adjustments.
+It is possible to deploy to Docker or to your own linux server with a few adjustments.
 
-### AWS
+### Docker
 
 ```bash
-$ eb init
-$ eb create lexcredendi-env
-$ eb deploy
+$ docker-compose build
+$ docker-compose up -d
 ```
 
 ## License

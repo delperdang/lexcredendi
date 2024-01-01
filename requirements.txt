@@ -1,7 +1,7 @@
 beautifulsoup4
 Django
 django-tz-detect
-mysqlclient
+psycopg2
 python-dateutil
 requests
 django-import-export

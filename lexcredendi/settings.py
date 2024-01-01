@@ -13,14 +13,17 @@ SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-if 'RDS_HOSTNAME' in os.environ:
+if 'PROD' in os.environ:
     DEBUG = False
 
 ALLOWED_HOSTS = [
+    "10.*",
+    "127.*",
+    "172.16.*",
+    "192.168.*",
     'localhost',
     'lexcredendi.com',
     'www.lexcredendi.com',
-    'lexcredendi-env.z2gttvymnr.us-east-1.elasticbeanstalk.com',
 ]
 
 
@@ -92,12 +95,12 @@ DATABASES = {
 if DEBUG == False:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': os.environ['RDS_DB_NAME'],
-            'USER': os.environ['RDS_USERNAME'],
-            'PASSWORD': os.environ['RDS_PASSWORD'],
-            'HOST': os.environ['RDS_HOSTNAME'],
-            'PORT': os.environ['RDS_PORT'],
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.environ['DB_NAME'],
+            'USER': os.environ['DB_USER'],
+            'PASSWORD': os.environ['DB_PASSWORD'],
+            'HOST': os.environ['DB_HOST'],
+            'PORT': os.environ['DB_PORT']
         }
     }
 
