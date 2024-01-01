@@ -1,8 +1,0 @@
-beautifulsoup4
-Django
-django-tz-detect
-psycopg2
-python-dateutil
-requests
-django-import-export
-Pillow
