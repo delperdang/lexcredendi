@@ -1,9 +1,9 @@
 version: '3'
 
 services:
-  django:
+  web:
     restart: always
-    build: ./django
+    build: ./web
     expose:
       - "8000"
     links:
@@ -14,7 +14,7 @@ services:
       - web-media:/usr/src/app/media
     env_file: .env
     environment:
-      DEBUG: 'true'
+      DEBUG: 'false'
     command: /usr/local/bin/gunicorn lexcredendi.wsgi:application -w 2 -b :8000
 
   nginx:
@@ -26,7 +26,7 @@ services:
       - web-static:/www/static
       - web-media:/www/media
     links:
-      - django:django
+      - web:web
 
   postgres:
     restart: always
@@ -35,6 +35,7 @@ services:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data/
+    env_file: .env
 
 volumes:
   web-django:
