@@ -1,9 +1,4 @@
-# Django Files
 *.pyc
 *.sqlite3
 media
-
-# AWS Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
+venv
