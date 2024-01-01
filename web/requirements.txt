@@ -1,0 +1,9 @@
+beautifulsoup4
+Django
+django-tz-detect
+python-dateutil
+requests
+django-import-export
+Pillow
+gunicorn
+psycopg

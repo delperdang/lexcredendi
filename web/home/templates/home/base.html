@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Quick access to prayers, apologetics, readings and more to enrich your Catholic faith">
+    <meta name="author" content="LexCredendi">
+    <link rel="icon" href="{% static 'home/img/favicon.ico' %}">
+
+    <title>Lex Credendi | A web app for Catholics</title>
+
+    <link rel="canonical" href="https://lexcredendi.com">
+
+    <!-- Bootstrap core CSS -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous" /> -->
+    <link href="{% static 'home/css/bootstrap.min.css' %}" rel="stylesheet">
+    
+    <!-- Custom styles for this template -->
+    <link href="{% static 'home/css/offcanvas.css' %}" rel="stylesheet">
+
+    <!-- Meta tags for social media previews -->
+    <meta property="og:title" content="Lex Credendi | A web app for Catholics" />
+    <meta property="og:description" content="Quick access to prayers, apologetics, readings and more to enrich your Catholic faith" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lexcredendi.com{% static 'home/img/monstrance.png' %}" />
+    <meta property="og:url" content="https://lexcredendi.com" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="LexCredendi.com" />
+    <meta property="og:country-name" content="USA" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://lexcredendi.com" />
+    <meta property="twitter:title" content="Lex Credendi | A web app for Catholics" />
+    <meta property="twitter:description" content="Quick access to prayers, apologetics, readings and more to enrich your Catholic faith" />
+    <meta property="twitter:image" content="https://lexcredendi.com{% static 'home/img/monstrance.png' %}" />
+
+    {% block head %}
+    {% endblock %}
+  </head>
+
+  {% load tz_detect %}
+  {% tz_detect %}
+  <body class="bg-light">
+
+    <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">Home</a>
+      <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/apologetics">Apologetics</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/art">Art</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/bible">Bible</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/catechism/">Catechism</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/doctrine">Doctrine</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/litcal">Calendar</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="/meditation">Meditation</a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/prayer">Prayer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/readings">Readings</a>
+          </li>
+        </ul>
+        {% if searchable %}
+        <form class="form-inline my-2 my-lg-0" method="GET" action="/{{ app_name }}/search">
+          <input name="q" value="{{ request.GET.q }}" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        {% endif %}
+      </div>
+    </nav>
+
+    {% block main %}
+    {% endblock %}
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script> -->
+    <!-- <script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"><\/script>')</script> -->
+    <script src="{% static 'home/js/jquery.slim.min.js' %}"></script>
+    <script>if (typeof window['jQuery'] == 'undefined') document.write(`<scr'+'ipt src="{% static 'home/js/jquery.slim.min.js' %}"></sc'+'ript>`);</script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/esm/popper.min.js" integrity="sha256-3Iu0zFU6cPS92RSC3Pe4DBwjIV/9XKyzYTqKZzly6A8=" crossorigin="anonymous"></script> -->
+    <script src="{% static 'home/js/popper.min.js' %}"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha256-CjSoeELFOcH0/uxWu6mC/Vlrc1AARqbm/jiiImDGV3s=" crossorigin="anonymous"></script> -->
+    <script src="{% static 'home/js/bootstrap.min.js' %}"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.6/holder.min.js" integrity="sha256-yF/YjmNnXHBdym5nuQyBNU62sCUN9Hx5awMkApzhZR0=" crossorigin="anonymous"></script> -->
+    <script src="{% static 'home/js/holder.min.js' %}"></script>
+    <script src="{% static 'home/js/offcanvas.js' %}"></script>
+  </body>
+</html>

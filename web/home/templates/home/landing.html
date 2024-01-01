@@ -1,0 +1,125 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block main %}
+<main role="main" class="container">
+      <div class="d-flex align-items-center p-3 my-3 text-white-50 {{ SEASONAL_COLOR }} rounded box-shadow">
+        <img class="mr-3" src="{% static 'home/img/monstrance.svg' %}" alt="" width="48" height="48">
+        <div class="lh-100">
+          <h6 class="mb-0 text-white lh-100">Lex Orandi Lex Credendi</h6>
+          <small>"The law of prayer is the law of faith: the Church believes as she prays." - Saint Prosper of Aquitaine</small>
+        </div>
+      </div>
+
+      <div class="my-3 p-3 bg-white rounded box-shadow">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Applications</h6>
+        <div class="media text-muted pt-3">
+          <img class="mr-3" src="{% static 'home/img/bishop.svg' %}" alt="" width="36" height="36">
+          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <div class="d-flex justify-content-between align-items-center w-100">
+              <strong class="text-gray-dark">Apologetics Guide</strong>
+              <a href="/apologetics">Explore &raquo</a>
+            </div>
+            <span class="d-block">proof texts and analysis by topic</span>
+          </div>
+        </div>
+        <div class="media text-muted pt-3">
+          <img class="mr-3" src="{% static 'home/img/eastern_cross.svg' %}" alt="" width="36" height="36">
+          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <div class="d-flex justify-content-between align-items-center w-100">
+              <strong class="text-gray-dark">Sacred Art</strong>
+              <a href="/art">Explore &raquo</a>
+            </div>
+            <span class="d-block">salvation history in art form</span>
+          </div>
+        </div>
+        <div class="media text-muted pt-3">
+          <img class="mr-3" src="{% static 'home/img/bible.svg' %}" alt="" width="36" height="36">
+          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <div class="d-flex justify-content-between align-items-center w-100">
+              <strong class="text-gray-dark">Bible</strong>
+              <a href="/bible">Explore &raquo</a>
+            </div>
+            <span class="d-block">bible in a year</span>
+          </div>
+        </div>
+        <div class="media text-muted pt-3">
+          <img class="mr-3" src="{% static 'home/img/mitre.svg' %}" alt="" width="36" height="36">
+          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <div class="d-flex justify-content-between align-items-center w-100">
+              <strong class="text-gray-dark">Catechism</strong>
+              <a href="/catechism">Explore &raquo</a>
+            </div>
+            <span class="d-block">catechism in a year</span>
+          </div>
+        </div>
+        <div class="media text-muted pt-3">
+          <img class="mr-3" src="{% static 'home/img/pope.svg' %}" alt="" width="36" height="36">
+          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <div class="d-flex justify-content-between align-items-center w-100">
+              <strong class="text-gray-dark">Doctrinal Formulae</strong>
+              <a href="/doctrine">Explore &raquo</a>
+            </div>
+            <span class="d-block">catechetical formulas and canonical lists</span>
+          </div>
+        </div>
+        <div class="media text-muted pt-3">
+          <img class="mr-3" src="{% static 'home/img/cathedral.svg' %}" alt="" width="36" height="36">
+          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <div class="d-flex justify-content-between align-items-center w-100">
+              <strong class="text-gray-dark">Liturgical Calendar</strong>
+              <a href="/litcal">Explore &raquo</a>
+            </div>
+            <span class="d-block">current feast and season of the Church</span>
+          </div>
+        </div>
+        <div class="media text-muted pt-3">
+          <img class="mr-3" src="{% static 'home/img/crucifix.svg' %}" alt="" width="36" height="36">
+          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <div class="d-flex justify-content-between align-items-center w-100">
+              <strong class="text-gray-dark">Breathing Meditation</strong>
+              <a href="/meditation">Explore &raquo</a>
+            </div>
+            <span class="d-block">rhythmic breathing Jesus Prayer</span>
+          </div>
+        </div>
+        </div>
+        <div class="media text-muted pt-3">
+          <img class="mr-3" src="{% static 'home/img/priest.svg' %}" alt="" width="36" height="36">
+          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <div class="d-flex justify-content-between align-items-center w-100">
+              <strong class="text-gray-dark">Prayer Texts</strong>
+              <a href="/prayer">Explore &raquo</a>
+            </div>
+            <span class="d-block">traditional and powerful Catholic prayers</span>
+          </div>
+        </div>
+        <div class="media text-muted pt-3">
+          <img class="mr-3" src="{% static 'home/img/deacon.svg' %}" alt="" width="36" height="36">
+          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <div class="d-flex justify-content-between align-items-center w-100">
+              <strong class="text-gray-dark">Daily Readings</strong>
+              <a href="/readings">Explore &raquo</a>
+            </div>
+            <span class="d-block">daily Mass readings (includes audio)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="my-3 p-3 bg-white rounded box-shadow">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Latest Updates</h6>
+        {% for update in updates %}
+        <div class="media text-muted pt-3">
+          <img class="mr-3" src="{% static 'home/img/quill.svg' %}" alt="" width="36" height="36">
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">{{ update.author }}</strong>
+            {{ update.date }} {{ update.message }}
+          </p>
+        </div>
+        {% endfor %}
+        <small class="d-block text-right mt-3">
+          <a href="https://github.com/dieselpwr/lexcredendi/commits/master">All Updates</a>
+        </small>
+      </div>
+</main>
+{% endblock %}
