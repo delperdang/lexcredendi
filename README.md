@@ -1,6 +1,6 @@
 # LexCredendi
 
-This is a simple Django 3 project configured to be deployed to Docker with a PostgreSQL backend. The function of this web app is to provide quick access to prayers, apologetics, readings and more to support Catholic users.
+This is a simple Django project configured to be deployed in Docker containers with a PostgreSQL backend and Nginx web server. The function of this web app is to provide quick access to prayers, apologetics, daily readings and more to support Catholic users.
 
 ## Features
 
@@ -8,54 +8,108 @@ This is a simple Django 3 project configured to be deployed to Docker with a Pos
 - PostgreSQL database support with psycopg
 - Web Scraping with Beautiful Soup for calendar and readings
 - Automatic timezone detection thanks to django-tz-detect
-- Context processing of liturgical season using python-dateutil
+- Context processing of liturgical season colors using python-dateutil
 - Automatic protocol elevation (HTTP to HTTPS)
-- Feed of project updates via requests + GitHub api
+- Feed of project updates using GitHub api
 
-## How to install
+## Setup
 
-```bash
-$ git clone https://github.com/delperdang/lexcredendi
-$ pip install -r requirements.txt
-```
+Below are the basic commands I would use to setup and test locally.
 
-## Environment variables
-
-These evironment variables are necessary to run the web app and automatically configure a superuser.
+### Setup part 1 - Clone the repo
 
 ```
-SECRET_KEY='foo'
-SUPERUSER_PASS='bar'
-SUPERUSER_NAME='spam'
-SUPERUSER_EMAL='eggs'
+mkdir ~/code/lexcredendi
+cd ~/code/lexcredendi
+git clone "https://github.com/delperdang/lexcredendi.git"
 ```
 
-These environment variables are necessary to deploy successfully with a PostgreSQL backend.
+### Setup part 2 - Create virtual environment (linux/mac)
+
+The .gitignore that comes with the project will ignore this virtual environment.
 
 ```
-POSTGRES_USER='spam'
-POSTGRES_PASSWORD='eggs'
+python -m venv venv
+cd ~/code/lexcredendi/web
+source ~/code/lexcredendi/venv/bin/activate
+python -m pip install -r requirements.txt
 ```
 
-These settings are explicitly altered based on the host environment and by proxy the `DEBUG` value.
+### Setup part 2 - Create virtual environment (windows)
+
+The .gitignore that comes with the project will ignore this virtual environment.
 
 ```
-settings.py DEBUG
-settings.py DATABASES
-urls.py urlpatterns
-offcanvas.js location.protocol
+python -m venv venv
+cd ~/code/lexcredendi/web
+./code/lexcredendi/venv/Scripts/activate
+python -m pip install -r requirements.txt
 ```
+
+### Setup Part 3 - Create Environment variables
+
+These evironment variables are necessary to run the web app, create a superuser, and connect to the database.
+
+```
+DEBUG=false
+SECRET_KEY=foo
+SUPERUSER_EMAL=bar
+SUPERUSER_NAME=spam
+SUPERUSER_PASS=eggs
+POSTGRES_USER=trad
+POSTGRES_PASSWORD=cath
+```
+
+Before deploying to docker, these environment variables must be added to a .env file in the root directory of the project.
+
+```
+django_project
+├── nginx
+├── web
+├── .env
+├── .gitignore
+├── docker-compose.yml
+├── README.md
+```
+
+These settings are explicitly altered based on the `DEBUG` environment variable.
+
+- settings.py - `DEBUG`
+- settings.py - `DATABASES`
+- urls.py - `urlpatterns`
 
 ## Deployment
 
-It is possible to deploy to Docker or to your own linux server with a few adjustments.
+It is possible to deploy to Docker immediately or to your own linux/windows server with a few minor adjustments.
 
 ### Docker
 
-```bash
-$ docker-compose build
-$ docker-compose up -d
+Before attempting to deploy to docker you should have [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed.
+
+#### Startup Procedure
+
 ```
+docker-compose build
+docker-compose up -d
+docker-compose exec web python manage.py collectstatic
+docker-compose exec web python manage.py makemigrations
+docker-compose exec web python manage.py migrate
+```
+
+#### Shutdown Procedure
+
+```
+docker-compose down
+```
+
+## Configuration
+
+Once the project is deployed in docker or a custom server it needs to be configured and populated.
+
+1. Open the site and visit `/createsuperuser` to generate a superuser. This will only perform an action if the superuser doesn't exist.
+2. Open the site and visit `/admin` and login with the superuser credentials.
+3. Begin uploading records using the import function for each applicable app (art has to be loaded one by one).
+4. For pre-prepared csv uploads and religious art visit this [Google Drive](https://drive.google.com/drive/folders/1TffGjIoL3h4bUeAUnZdR_Pn1_Ob9BoOa) and request access.
 
 ## License
 

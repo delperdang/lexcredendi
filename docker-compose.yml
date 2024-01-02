@@ -13,8 +13,6 @@ services:
       - web-static:/usr/src/app/static
       - web-media:/usr/src/app/media
     env_file: .env
-    environment:
-      DEBUG: 'false'
     command: /usr/local/bin/gunicorn lexcredendi.wsgi:application -w 2 -b :8000
 
   nginx:
