@@ -20,6 +20,7 @@ class Readings(object):
         year_string = '{:%Y}'.format(local_now)[2:]
         date_string = '{}{}'.format(month_day_string, year_string)
         url = self.USCCB_READINGS.format(date_string)
+        print(url)
         return url
 
     def _get_page_soup(self, url, parser='html.parser'):
@@ -37,7 +38,7 @@ class Readings(object):
         readings = []
         headings = soup.find_all('div', {'class': 'content-header'})
         for heading in headings:
-            if 'READING 1' in heading.text.upper():
+            if 'READING 1' in heading.text.upper() or 'READING I' in heading.text.upper():
                 if heading.a.get('href', '').startswith('http'):
                     temp_link = heading.a.get('href')
                 elif heading.a.get('href', '').startswith('/'):
@@ -53,7 +54,7 @@ class Readings(object):
                         'text': temp_text,
                     }
                 )
-            if 'READING 2' in heading.text.upper():
+            if 'READING 2' in heading.text.upper() or 'READING II' in heading.text.upper():
                 if heading.a.get('href', '').startswith('http'):
                     temp_link = heading.a.get('href')
                 elif heading.a.get('href', '').startswith('/'):
