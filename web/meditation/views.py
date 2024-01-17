@@ -1,6 +1,5 @@
 from django.shortcuts import render
 
-
 APP_NAME = 'meditation'
 APP_FULL_NAME = 'Breathing Meditation'
 ICON_FILENAME = 'crucifix.svg'

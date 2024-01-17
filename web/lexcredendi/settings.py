@@ -24,9 +24,6 @@ ALLOWED_HOSTS = [
     'www.lexcredendi.com',
 ]
 
-
-# Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -80,9 +77,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'lexcredendi.wsgi.application'
 
-
-# Database
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -102,9 +96,6 @@ if DEBUG == False:
         }
     }
 
-
-# Password validation
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -122,36 +113,25 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
-
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Media files (Images)
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Redirect after login
-
 LOGIN_REDIRECT_URL = '/'
 
 # Timezone detection
-
 TZ_DETECT_COUNTRIES = ('US', 'CA', 'GB', 'AU')
 
 # Allowed file types
-
 IMPORT_EXPORT_FORMATS = [CSV]
