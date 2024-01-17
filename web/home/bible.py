@@ -318,7 +318,7 @@ class Bible(object):
                 abbreviations.extend(abbreviations_mod1)
                 abbreviations.append(book)
                 for abbreviation in abbreviations:
-                    response_string='<a href={}>{}***{}</a>'.format(self.USCCB_BIBLE_URL.format(book,chapter),book,str(chapter))
+                    response_string='<a href={}>{}***{}:</a>'.format(self.USCCB_BIBLE_URL.format(book,chapter),book,str(chapter))
                     response_list.append(response_string)
                     matching_string = '{} {}:'.format(abbreviation, str(chapter))
                     matching_list.append(matching_string)
