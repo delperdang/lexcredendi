@@ -20,7 +20,6 @@ class Readings(object):
         year_string = '{:%Y}'.format(local_now)[2:]
         date_string = '{}{}'.format(month_day_string, year_string)
         url = self.USCCB_READINGS.format(date_string)
-        print(url)
         return url
 
     def _get_page_soup(self, url, parser='html.parser'):
