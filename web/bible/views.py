@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.db.models import Q
 from bible.models import Record
-from bible.podcast import Podcast
+from home.podcast import Podcast
 
 APP_NAME = 'bible'
 APP_FULL_NAME = 'Bible in a Year'
@@ -39,7 +39,7 @@ def home(request):
 def details(request, code):
     record = Record.objects.get(pk=code)
     
-    podcast = Podcast()
+    podcast = Podcast('bibleinayear')
     record = podcast.update_record(record)
 
     context = {

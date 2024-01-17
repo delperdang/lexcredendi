@@ -5,8 +5,9 @@ class Podcast(object):
     '''
     Captures the associated podcast data for a target record
     '''
-    # Podcast URL constants
-    RSS_FEED = 'https://feeds.fireside.fm/bibleinayear/rss'
+
+    def __init__(self, podcast_name):  # Define arguments here
+        self.rss_feed = 'https://feeds.fireside.fm/{}/rss'.format(podcast_name)  # e.g. bibleinayear or catechisminayear
 
     def _get_page_soup(self, url, parser='html.parser'):
         '''
@@ -35,7 +36,7 @@ class Podcast(object):
         '''
         returns an updated record object with podcast data
         '''
-        audio_soup = self._get_page_soup(self.RSS_FEED)
+        audio_soup = self._get_page_soup(self.rss_feed)
         audio_link = self._extract_audio(audio_soup, record)
         record.text += audio_link
         return record
