@@ -324,13 +324,21 @@ class Bible(object):
                     matching_list.append(matching_string)
         return matching_list, response_list
 
+    def _insert_asterisk(self, text):
+        """Inserts a "*" between each character in a string."""
+        new_text = ""
+        for char in text:
+            new_text += char + "*"
+        return new_text[:-1]  # Remove the extra "*" at the end
+
     def linkify(self, record_string):
         """Replaces substrings in a record string based on matching and response lists."""
 
         for i, match in enumerate(self.matching_list):
             if match in record_string.lower():
                 initial_response_string = self.response_list[i]
-                final_response_string = initial_response_string.replace('>response_string<','>{}<'.format(match.capitalize()))
+                capitalized_match_string_w_asterisks = self._insert_asterisk(match.capitalize())
+                final_response_string = initial_response_string.replace('>response_string<','>{}<'.format(capitalized_match_string_w_asterisks))
                 record_string = re.sub(match, final_response_string, record_string, flags=re.IGNORECASE)
-        record_string = record_string.replace('***', ' ')
+        record_string = record_string.replace('*', '') # Removes the asterisks inserted to prevent multiple matches
         return record_string
