@@ -39,6 +39,9 @@ def home(request):
 def details(request, code):
     record = Record.objects.get(pk=code)
 
+    bible = Bible()
+    record.text = bible.linkify(record.text)
+
     context = {
         'app_full_name': APP_FULL_NAME,
         'icon_filename': ICON_FILENAME,

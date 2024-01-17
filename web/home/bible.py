@@ -318,7 +318,7 @@ class Bible(object):
                 abbreviations.extend(abbreviations_mod1)
                 abbreviations.append(book)
                 for abbreviation in abbreviations:
-                    response_string='<a href={}>{}***{}</a>'.format(self.USCCB_BIBLE_URL.format(book,chapter),book,str(chapter))
+                    response_string='<a href={}>response_string</a>'.format(self.USCCB_BIBLE_URL.format(book,chapter),book,str(chapter))
                     response_list.append(response_string)
                     matching_string = '{} {}'.format(abbreviation, str(chapter))
                     matching_list.append(matching_string)
@@ -329,6 +329,8 @@ class Bible(object):
 
         for i, match in enumerate(self.matching_list):
             if match in record_string.lower():
-                record_string = record_string.replace(match, self.response_list[i])
+                initial_response_string = self.response_list[i]
+                final_response_string = initial_response_string.replace('>response_string<','>{}<'.format(match.capitalize()))
+                record_string = re.sub(match, final_response_string, record_string, flags=re.IGNORECASE)
         record_string = record_string.replace('***', ' ')
         return record_string

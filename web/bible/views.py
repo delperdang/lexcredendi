@@ -43,6 +43,9 @@ def details(request, code):
     podcast = Podcast('bibleinayear')
     record = podcast.update_record(record)
 
+    bible = Bible()
+    record.text = bible.linkify(record.text)
+
     context = {
         'app_full_name': APP_FULL_NAME,
         'icon_filename': ICON_FILENAME,
