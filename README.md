@@ -41,8 +41,9 @@ The .gitignore that comes with the project will ignore this virtual environment.
 
 ```
 python -m venv venv
-cd ~/code/lexcredendi/web
+cd ~/code/lexcredendi
 ./code/lexcredendi/venv/Scripts/activate
+cd ~/code/lexcredendi/web
 python -m pip install -r requirements.txt
 ```
 
