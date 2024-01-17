@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.db.models import Q
 from bible.models import Record
 from home.podcast import Podcast
+from home.bible import Bible
 
 APP_NAME = 'bible'
 APP_FULL_NAME = 'Bible in a Year'
