@@ -1,3 +1,5 @@
+import re
+
 class Bible(object):
     '''
     Takes record strings and replaces abbreviated bible references with hyperlinked bible references
@@ -318,7 +320,7 @@ class Bible(object):
                 for abbreviation in abbreviations:
                     response_string='<a href={}>{}***{}</a>'.format(self.USCCB_BIBLE_URL.format(book,chapter),book,str(chapter))
                     response_list.append(response_string)
-                    matching_string = '{} {}'.format(abbreviation, str(chapter))
+                    matching_string = '{} {}:'.format(abbreviation, str(chapter))
                     matching_list.append(matching_string)
         return matching_list, response_list
 
