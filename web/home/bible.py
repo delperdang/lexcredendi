@@ -328,5 +328,5 @@ class Bible(object):
         for i, match in enumerate(self.matching_list):
             if match in record_string.lower():
                 record_string = record_string.replace(match, self.response_list[i])
-        
+        record_string = record_string.replace('***', ' ')
         return record_string
