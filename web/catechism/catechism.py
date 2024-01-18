@@ -30,12 +30,29 @@ class Catechism(object):
         soup = BeautifulSoup(response.content, features=parser)
         return soup
     
-    def _get_paragraphs(self):
+    def get_paragraphs_xref(self):
         '''
         iterates through all pages of the catechism marking the location of each paragraph
         '''
-
-        for paragraph in range(2865, 0, -1):
-            for page in range(374, 0, -1):
-                page_code = self._convert_to_custom_system(page)
+        paragraph_url_xref = {}
+        for paragraph_num in range(2865, 0, -1):
+            paragraph_found = False
+            for page_num in range(374, 0, -1):
+                page_code = self._convert_to_custom_system(page_num)
                 url = '{}{}{}'.format(self.VATICAN_URL_PREFIX,page_code,self.VATICAN_URL_SUFFIX)
+                soup = self._get_page_soup(url)
+                paragraphs = soup.find_all('p', {'class': 'MsoNormal'})
+                for paragraph in paragraphs:
+                    if paragraph.text.startswith(str(paragraph_num)):
+                        paragraph_url_xref[str(paragraph_num)] = url
+                        paragraph_found = True
+                        break
+                if paragraph_found:
+                    break
+        return paragraph_url_xref
+
+catechism = Catechism()
+paragraph_url_xref = catechism.get_paragraphs_xref()                
+import json
+with open("paragraph_url_xref.json", "w") as f:
+    json.dump(paragraph_url_xref, f, indent=4)
