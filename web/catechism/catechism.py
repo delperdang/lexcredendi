@@ -2888,6 +2888,5 @@ class Catechism(object):
                 key_w_asterisks = self._insert_asterisk(key)
                 final_response_string = initial_response_string.replace('>response_string<','>{}<'.format(key_w_asterisks))
                 record_string = record_string.replace(key, final_response_string)
-                # record_string = re.sub(key, final_response_string, record_string, flags=re.IGNORECASE)
         record_string = record_string.replace('*', '') # Removes the asterisks inserted to prevent multiple matches
         return record_string

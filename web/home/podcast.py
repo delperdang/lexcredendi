@@ -1,3 +1,4 @@
+import re
 import requests
 from bs4 import BeautifulSoup
 
@@ -22,7 +23,7 @@ class Podcast(object):
         extracts audio url for target date mp3
         '''
         url = ''
-        day_code = record.code
+        day_code = re.sub(r"^DAY0+(?=\d)", "DAY", record.code)
         items = soup.findAll('item')
         for item in items:
             title_text = item.title.text
