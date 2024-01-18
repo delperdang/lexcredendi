@@ -35,9 +35,11 @@ class Catechism(object):
         iterates through all pages of the catechism marking the location of each paragraph
         '''
         paragraph_url_xref = {}
-        for paragraph_num in range(2865, 0, -1):
+        last_page_num = 374 # 374 pages in CCC vatican version
+        for paragraph_num in range(2865, 0, -1): # 2865 paragraphs in CCC
             paragraph_found = False
-            for page_num in range(374, 0, -1):
+            for page_num in range(last_page_num, 0, -1):
+                print('Checking for paragraph ' + str(paragraph_num) + ' on page ' + str(page_num))
                 page_code = self._convert_to_custom_system(page_num)
                 url = '{}{}{}'.format(self.VATICAN_URL_PREFIX,page_code,self.VATICAN_URL_SUFFIX)
                 soup = self._get_page_soup(url)
@@ -46,6 +48,7 @@ class Catechism(object):
                     if paragraph.text.startswith(str(paragraph_num)):
                         paragraph_url_xref[str(paragraph_num)] = url
                         paragraph_found = True
+                        last_page_num = page_num
                         break
                 if paragraph_found:
                     break
