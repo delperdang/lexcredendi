@@ -15,7 +15,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = os.getenv('DEBUG', 'False').lower() in ('on', 'true', 'y', 'yes')
 
 # SECURITY WARNING: set this to actual allowed hosts before deploying to prod
-ALLOWED_HOSTS = [*]
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
