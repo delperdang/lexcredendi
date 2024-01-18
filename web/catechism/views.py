@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.db.models import Q
 from catechism.models import Record
 from home.podcast import Podcast
+from catechism.catechism import Catechism
 
 APP_NAME = 'catechism'
 APP_FULL_NAME = 'Catechism in a Year'
@@ -41,6 +42,9 @@ def details(request, code):
 
     podcast = Podcast('catechisminayear')
     record = podcast.update_record(record)
+
+    catechism = Catechism()
+    record.text = catechism.linkify(record.text)
 
     context = {
         'app_full_name': APP_FULL_NAME,
