@@ -59,9 +59,7 @@ SUPERUSER_NAME=spam
 SUPERUSER_PASS=eggs
 POSTGRES_USER=trad
 POSTGRES_PASSWORD=cath
-ALLOWED_HOST_01=lexcredendi.com,
-ALLOWED_HOST_02=www.lexcredendi.com,
-ALLOWED_HOST_03=localhost
+ALLOWED_HOSTS=lexcredendi.com www.lexcredendi.com localhost
 ```
 
 Before deploying to docker, these environment variables must be added to a .env file in the root directory of the project.
