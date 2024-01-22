@@ -12,8 +12,9 @@ services:
       - web-django:/usr/src/app
       - web-static:/usr/src/app/static
       - web-media:/usr/src/app/media
+      - /var/certbot/conf:/etc/letsencrypt/:ro
     env_file: .env
-    command: /usr/local/bin/gunicorn lexcredendi.wsgi:application -w 2 -b :8000
+    command: /usr/local/bin/gunicorn --config gunicorn_config.py lexcredendi.wsgi:application
 
   nginx:
     restart: always
@@ -34,6 +35,14 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data/
     env_file: .env
+
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - /var/certbot/conf:/etc/letsencrypt/:rw
+      - /var/certbot/www/:/var/www/certbot/:rw
+    depends_on:
+      - nginx
 
 volumes:
   web-django:
