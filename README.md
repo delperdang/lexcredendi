@@ -100,8 +100,11 @@ docker-compose exec web python manage.py migrate --no-input
 
 #### Shutdown Procedure
 
+**Warning**: this assumes you want to completely remove all volumes and images for a fresh start
+
 ```
 docker-compose down --volumes
+docker image prune --all --force
 ```
 
 ## Configuration
