@@ -10,7 +10,7 @@ This is a simple Django project configured to be deployed in Docker containers w
 - Automatic timezone detection thanks to django-tz-detect
 - Context processing of liturgical season colors using python-dateutil
 - Automatic protocol elevation (HTTP to HTTPS)
-- Feed of project updates using GitHub api
+- Feed of project updates using GitHub API
 
 ## Setup
 
