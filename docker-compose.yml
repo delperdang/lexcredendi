@@ -36,7 +36,7 @@ services:
       - pgdata:/var/lib/postgresql/data/
     env_file: .env
 
-# TODO: comment this block when encryption is not yet active
+  # TODO: comment this block when encryption is not yet active
   # certbot:
   #   image: certbot/certbot:latest
   #   volumes:
