@@ -39,7 +39,7 @@ services:
     env_file: .env
 
   certbot:
-    image: certbot/certbot:latest
+    build: ./certbot/
     volumes:
       - /var/certbot/conf:/etc/letsencrypt
       - /var/certbot/www/:/var/www/certbot
