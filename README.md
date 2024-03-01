@@ -91,8 +91,7 @@ Before attempting to deploy to docker you should have [Docker Desktop](https://w
 #### Startup Procedure
 
 ```
-docker-compose build
-docker-compose up -d
+docker-compose up -d --build
 docker-compose exec web python manage.py collectstatic --no-input
 docker-compose exec web python manage.py makemigrations --no-input
 docker-compose exec web python manage.py migrate --no-input
@@ -104,7 +103,7 @@ docker-compose exec web python manage.py migrate --no-input
 
 ```
 docker-compose down --volumes
-docker image prune --all --force
+docker system prune -a --force
 ```
 
 ## Configuration

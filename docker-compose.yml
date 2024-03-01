@@ -24,6 +24,8 @@ services:
     volumes:
       - web-static:/www/static
       - web-media:/www/media
+      - /var/certbot/conf:/etc/letsencrypt
+      - /var/certbot/www/:/var/www/certbot
     links:
       - web:web
 
@@ -36,14 +38,13 @@ services:
       - pgdata:/var/lib/postgresql/data/
     env_file: .env
 
-  # TODO: comment this block when encryption is not yet active
-  # certbot:
-  #   image: certbot/certbot:latest
-  #   volumes:
-  #     - /var/certbot/conf:/etc/letsencrypt/:rw
-  #     - /var/certbot/www/:/var/www/certbot/:rw
-  #   depends_on:
-  #     - nginx
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - /var/certbot/conf:/etc/letsencrypt
+      - /var/certbot/www/:/var/www/certbot
+    depends_on:
+      - nginx
 
 volumes:
   web-django:
