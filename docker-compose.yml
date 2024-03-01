@@ -12,7 +12,7 @@ services:
       - web-django:/usr/src/app
       - web-static:/usr/src/app/static
       - web-media:/usr/src/app/media
-      - /var/certbot/conf:/etc/letsencrypt/:ro
+      - /var/certbot/conf:/etc/letsencrypt
     env_file: .env
     command: /usr/local/bin/gunicorn --config gunicorn_config.py lexcredendi.wsgi:application
 
