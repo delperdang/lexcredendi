@@ -21,6 +21,7 @@ services:
     build: ./nginx/
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - web-static:/www/static
       - web-media:/www/media
