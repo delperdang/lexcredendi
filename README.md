@@ -30,7 +30,7 @@ The .gitignore that comes with the project will ignore this virtual environment.
 
 ```
 python -m venv venv
-cd ~/code/lexcredendi/web
+cd ~/code/lexcredendi/django
 source ~/code/lexcredendi/venv/bin/activate
 python -m pip install -r requirements.txt
 ```
@@ -43,7 +43,7 @@ The .gitignore that comes with the project will ignore this virtual environment.
 python -m venv venv
 cd ~/code/lexcredendi
 ./code/lexcredendi/venv/Scripts/activate
-cd ~/code/lexcredendi/web
+cd ~/code/lexcredendi/django
 python -m pip install -r requirements.txt
 ```
 
@@ -67,7 +67,7 @@ Before deploying to docker, these environment variables must be added to a .env 
 ```
 django_project
 ├── nginx
-├── web
+├── django
 ├── .env
 ├── .gitignore
 ├── docker-compose.yml
@@ -92,9 +92,9 @@ Before attempting to deploy to docker you should have [Docker Desktop](https://w
 
 ```
 docker-compose up -d --build
-docker-compose exec web python manage.py collectstatic --no-input
-docker-compose exec web python manage.py makemigrations --no-input
-docker-compose exec web python manage.py migrate --no-input
+docker-compose exec django python manage.py collectstatic --no-input
+docker-compose exec django python manage.py makemigrations --no-input
+docker-compose exec django python manage.py migrate --no-input
 ```
 
 #### Shutdown Procedure
