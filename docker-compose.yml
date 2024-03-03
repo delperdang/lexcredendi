@@ -12,7 +12,7 @@ services:
       - web-django:/usr/src/app
       - web-static:/usr/src/app/static
       - web-media:/usr/src/app/media
-      - /var/certbot/conf:/etc/letsencrypt
+      - certbot-conf:/etc/letsencrypt
     env_file: .env
     command: /usr/local/bin/gunicorn --config gunicorn_config.py lexcredendi.wsgi:application
 
@@ -25,8 +25,8 @@ services:
     volumes:
       - web-static:/www/static
       - web-media:/www/media
-      - /var/certbot/conf:/etc/letsencrypt
-      - /var/certbot/www/:/var/www/certbot
+      - certbot-conf:/etc/letsencrypt
+      - certbot-www:/var/www/certbot
     links:
       - web:web
 
@@ -36,14 +36,14 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data/
+      - postgres-data:/var/lib/postgresql/data/
     env_file: .env
 
   certbot:
     build: ./certbot/
     volumes:
-      - /var/certbot/conf:/etc/letsencrypt
-      - /var/certbot/www/:/var/www/certbot
+      - certbot-conf:/var/certbot/conf
+      - certbot-www:/var/www/certbot
     depends_on:
       - nginx
 
@@ -51,4 +51,6 @@ volumes:
   web-django:
   web-static:
   web-media:
-  pgdata:
+  postgres-data:
+  certbot-conf:
+  certbot-www:

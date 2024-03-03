@@ -5,6 +5,6 @@ workers = 2
 worker_connections = 1000
 threads = 4
 
-# TODO: comment these lines when encryption is not yet active
+# TODO: uncomment these lines when encryption is active
 # certfile = "/etc/letsencrypt/live/lexcredendi.ignorelist.com/fullchain.pem"
 # keyfile = "/etc/letsencrypt/live/lexcredendi.ignorelist.com/privkey.pem"
