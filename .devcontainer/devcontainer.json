@@ -9,14 +9,26 @@
 	// "features": {},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+	"forwardPorts": [8000],
+
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "git config --global user.email 'steve.delperdang@gmail.com'; git config --global user.name 'delperdang'"
+	"postCreateCommand": "git config --global user.email 'steve.delperdang@gmail.com'; git config --global user.name 'delperdang'",
 
 	// Configure tool-specific properties.
 	// "customizations": {},
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
+
+	"containerEnv": {
+		"DEBUG": "${localEnv:DEBUG}",
+		"SECRET_KEY": "${localEnv:SECRET_KEY}",
+		"SUPERUSER_EMAL": "${localEnv:SUPERUSER_EMAL}",
+		"SUPERUSER_NAME": "${localEnv:SUPERUSER_NAME}",
+		"SUPERUSER_PASS": "${localEnv:SUPERUSER_PASS}",
+		"POSTGRES_USER": "${localEnv:POSTGRES_USER}",
+		"POSTGRES_PASSWORD": "${localEnv:POSTGRES_PASSWORD}",
+		"ALLOWED_HOSTS": "${localEnv:ALLOWED_HOSTS}"
+	}
 }
