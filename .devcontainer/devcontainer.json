@@ -22,7 +22,7 @@
 	// "remoteUser": "root"
 
 	"containerEnv": {
-		"DEBUG": "${localEnv:DEBUG}",
+		"DEBUG": "true",
 		"SECRET_KEY": "${localEnv:SECRET_KEY}",
 		"SUPERUSER_EMAL": "${localEnv:SUPERUSER_EMAL}",
 		"SUPERUSER_NAME": "${localEnv:SUPERUSER_NAME}",
