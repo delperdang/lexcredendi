@@ -13,8 +13,8 @@ def get_unique_albums():
     albums_json = []
     for record in records:
         temp_dict = {
-            'code': "".join(char.upper() for char in record.album if char.isalpha()),
-            'title': record.album
+            'code': record.album,
+            'title': record.album.replace("_", " ").title()
         }
         if temp_dict not in albums_json:
             albums_json.append(temp_dict)
