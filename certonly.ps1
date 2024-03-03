@@ -1,1 +1,2 @@
+# Add --dry-run to the below to test without writing new cert files
 docker-compose run --rm certbot certonly --webroot --webroot-path=/var/www/certbot --email steve.delperdang@gmail.com --agree-tos --no-eff-email -d lexcredendi.ignorelist.com
