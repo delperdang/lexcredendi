@@ -17,32 +17,35 @@ This is a simple Django project configured to be deployed in Docker containers w
 
 Below are the basic steps use to setup and test the web app with docker.
 
-### Setup part 1 - Dev Containers in VS Code
+### Setup part 1 - Install Dev Container
 
 1) Install [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 2) Install [VS Code](https://code.visualstudio.com/)
 3) Install the Extension "Dev Containers"
 
-### Setup part 2 - Clone the repo
+### Setup part 2 - Clone the Repository
 
-```
-mkdir ~/code/lexcredendi
-cd ~/code/lexcredendi
-git clone "https://github.com/delperdang/lexcredendi.git"
-```
+1) Download the [master branch](https://github.com/delperdang/lexcredendi/archive/refs/heads/master.zip) as a zip file
+2) Unzip and copy the contents to a directory of your choosing (e.g. `~/code/lexcredendi`)
 
-These settings are explicitly altered based on the `DEBUG` environment variable.
-
-- settings.py - `DEBUG`
-- settings.py - `DATABASES`
-- urls.py - `urlpatterns`
-
-### Setup Part 4 - Preparing the Workspace
+### Setup Part 3 - Prepare the Workspace
 
 1) Close any current workspace (File > Close Workspace)
 2) Close any remote connection (File > Close Remote Connection)
 3) Open the project workspace file (File > Open Workspace from File). The file is called `lexcredendi.code-workspace` and is located in the root directory of the project.
-4) 
+4) Open the command palette (View > Command Palette) and enter `>Dev Containers: Rebuild and Reopen in Container`
+
+### Setup Part 4 - Setup and Run Django
+
+Run the following commands to setup and run Django with the test web server
+```
+cd django
+pip install -r requirements.txt
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver 0.0.0.0:8000
+```
+You will now be able to access your test server from a browser on your host machine at `localhost:8000`
 
 ## Deployment
 
@@ -52,7 +55,7 @@ Before attempting to deploy to docker you should have [Docker Desktop](https://w
 
 ### Environment variables
 
-These evironment variables are necessary to run the web app, create a superuser, connect to the database, and do dynamic dns.
+These evironment variables are necessary to run the web app, create a superuser, connect to the database, and update DNS.
 
 ```
 DEBUG=false
@@ -62,7 +65,7 @@ SUPERUSER_NAME=spam
 SUPERUSER_PASS=eggs
 POSTGRES_USER=trad
 POSTGRES_PASSWORD=cath
-ALLOWED_HOSTS=localhost lexcredendi.app www.lexcredendi.app
+ALLOWED_HOSTS=lexcredendi.app www.lexcredendi.app
 API_KEY=cloudflare
 ZONE=lexcredendi.app
 PROXIED=false
@@ -85,28 +88,33 @@ lexcredendi
 ├── README.md
 ```
 
+#### Retrieving an SSL Cert
+
+1) Follow the comments in `certbot/Dockerfile`
+2) Follow the comments in `django/gunicorn_config.py`
+3) Follow the comments in `nginx/Dockerfile`
+4) Run `scripts/certonly.ps1` (if not on Windows try the command from the script in you default shell)
+5) Assuming success... open Docker Desktop, go to Volumes, select lexcredendi_certbot-conf, and save the following files:
+    - `/live/lexcredendi.app/fullchain.pem`
+    - `/live/lexcredendi.app/fullchain.pem`
+6) Copy those saved files to the `certbot` directory in the project
+7) Repeat steps 1-3 following the comments for once SSL is active
+8) Run `scripts/shutdown_hard.ps1` (if not on Windows try the command from the script in you default shell)
+9) Run `scripts/startup.ps1` (if not on Windows try the command from the script in you default shell)
 
 #### Startup Procedure
 
-```
-docker-compose up -d --build
-docker-compose exec django python manage.py collectstatic --no-input
-docker-compose exec django python manage.py makemigrations --no-input
-docker-compose exec django python manage.py migrate --no-input
-```
+Run `scripts/startup.ps1` to build and start up all the docker containers
 
-#### Shutdown Procedure
+#### Shutdown Procedures
 
-**Warning**: this assumes you want to completely remove all volumes and images for a fresh start
+Run `scripts/shutdown_hard.ps1` to destroy all containers, volumes, and images
 
-```
-docker-compose down --volumes
-docker system prune -a --force
-```
+Run `scripts/shutdown_soft.ps1` to destroy all containers and images
 
 ## Configuration
 
-Once the project is deployed in docker or a custom server it needs to be configured and populated.
+Once the project is deployed it needs to be configured and populated.
 
 1. Open the site and visit `/createsuperuser` to generate a superuser. This will only perform an action if the superuser doesn't exist.
 2. Open the site and visit `/admin` and login with the superuser credentials.

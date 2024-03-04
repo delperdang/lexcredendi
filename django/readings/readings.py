@@ -120,8 +120,7 @@ class Readings(object):
                 if local_now_date == title_date:
                     url = item.enclosure.get('url')
             except ParserError as err:
-                # TODO: figure out a better way to parse dates from RSS feed
-                print(err)
+                pass
         audio = {
             'title': 'Complete Audio',
             'text': '<a href="{}">{}</a>'.format(url, 'Click to play')

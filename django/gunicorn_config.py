@@ -5,6 +5,7 @@ workers = 2
 worker_connections = 1000
 threads = 4
 
+# TODO: comment these lines when requesting a new certificate
 # TODO: uncomment these lines once SSL is active
 certfile = "/etc/letsencrypt/live/lexcredendi.app/fullchain.pem"
 keyfile = "/etc/letsencrypt/live/lexcredendi.app/privkey.pem"
