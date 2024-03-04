@@ -6,5 +6,5 @@ worker_connections = 1000
 threads = 4
 
 # TODO: uncomment these lines once SSL is active
-certfile = "/etc/letsencrypt/live/lexcredendi.ignorelist.com/fullchain.pem"
-keyfile = "/etc/letsencrypt/live/lexcredendi.ignorelist.com/privkey.pem"
+certfile = "/etc/letsencrypt/live/lexcredendi.app/fullchain.pem"
+keyfile = "/etc/letsencrypt/live/lexcredendi.app/privkey.pem"
