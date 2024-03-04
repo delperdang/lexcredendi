@@ -1,22 +1,29 @@
 # LexCredendi
 
-This is a simple Django project configured to be deployed in Docker containers with a PostgreSQL backend and Nginx web server. The function of this web app is to provide quick access to prayers, apologetics, daily readings and more to support Catholic users.
+This is a simple Django project configured to be deployed in Docker containers with a PostgreSQL backend and Nginx web server. The function of this web app is to provide quick access to Catholic prayers, apologetics, daily readings, sacred art and much more.
 
 ## Features
 
 - Django web framework
 - PostgreSQL database support with psycopg
 - Web Scraping with Beautiful Soup for calendar and readings
-- Automatic timezone detection thanks to django-tz-detect
 - Context processing of liturgical season colors using python-dateutil
 - Dynamic Bible and Catechism link insertion for supported apps
-- Feed of project updates using GitHub API
+- A live feed of project updates using GitHub API
+- Dynamic DNS from oznu/cloudflare-ddns
+- SSL Certificate management from certbot/certbot 
 
 ## Setup
 
-Below are the basic commands I would use to setup and test locally.
+Below are the basic steps use to setup and test the web app with docker.
 
-### Setup part 1 - Clone the repo
+### Setup part 1 - Dev Containers in VS Code
+
+1) Install [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+2) Install [VS Code](https://code.visualstudio.com/)
+3) Install the Extension "Dev Containers"
+
+### Setup part 2 - Clone the repo
 
 ```
 mkdir ~/code/lexcredendi
@@ -24,32 +31,28 @@ cd ~/code/lexcredendi
 git clone "https://github.com/delperdang/lexcredendi.git"
 ```
 
-### Setup part 2 - Create virtual environment (linux/mac)
+These settings are explicitly altered based on the `DEBUG` environment variable.
 
-The .gitignore that comes with the project will ignore this virtual environment.
+- settings.py - `DEBUG`
+- settings.py - `DATABASES`
+- urls.py - `urlpatterns`
 
-```
-python -m venv venv
-cd ~/code/lexcredendi/django
-source ~/code/lexcredendi/venv/bin/activate
-python -m pip install -r requirements.txt
-```
+### Setup Part 4 - Preparing the Workspace
 
-### Setup part 2 - Create virtual environment (windows)
+1) Close any current workspace (File > Close Workspace)
+2) Close any remote connection (File > Close Remote Connection)
+3) Open the project workspace file (File > Open Workspace from File). The file is called `lexcredendi.code-workspace` and is located in the root directory of the project.
+4) 
 
-The .gitignore that comes with the project will ignore this virtual environment.
+## Deployment
 
-```
-python -m venv venv
-cd ~/code/lexcredendi
-./code/lexcredendi/venv/Scripts/activate
-cd ~/code/lexcredendi/django
-python -m pip install -r requirements.txt
-```
+### Docker
 
-### Setup Part 3 - Create Environment variables
+Before attempting to deploy to docker you should have [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed.
 
-These evironment variables are necessary to run the web app, create a superuser, and connect to the database.
+### Environment variables
+
+These evironment variables are necessary to run the web app, create a superuser, connect to the database, and do dynamic dns.
 
 ```
 DEBUG=false
@@ -59,34 +62,29 @@ SUPERUSER_NAME=spam
 SUPERUSER_PASS=eggs
 POSTGRES_USER=trad
 POSTGRES_PASSWORD=cath
-ALLOWED_HOSTS=127.0.0.1 localhost
+ALLOWED_HOSTS=localhost lexcredendi.app www.lexcredendi.app
+API_KEY=cloudflare
+ZONE=lexcredendi.app
+PROXIED=false
 ```
 
-Before deploying to docker, these environment variables must be added to a .env file in the root directory of the project.
+Before testing or deploying in docker, these environment variables must be added to a `.env` file in the root directory of the project.
 
 ```
-django_project
-├── nginx
+lexcredendi
+├── .devcontainer
+├── .github
+├── certbot
 ├── django
-├── .env
+├── nginx
+├── scripts
+├── prod.env
 ├── .gitignore
 ├── docker-compose.yml
+├── lexcredendi.code-workspace
 ├── README.md
 ```
 
-These settings are explicitly altered based on the `DEBUG` environment variable.
-
-- settings.py - `DEBUG`
-- settings.py - `DATABASES`
-- urls.py - `urlpatterns`
-
-## Deployment
-
-It is possible to deploy to Docker immediately or to your own linux/windows server with a few minor adjustments.
-
-### Docker
-
-Before attempting to deploy to docker you should have [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed.
 
 #### Startup Procedure
 

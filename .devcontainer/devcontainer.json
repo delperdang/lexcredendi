@@ -1,32 +1,7 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
 	"name": "Python 3",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "mcr.microsoft.com/devcontainers/python:1-3.12-bullseye",
-
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
-
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [8000],
-
-
-	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "git config --global user.email 'steve.delperdang@gmail.com'; git config --global user.name 'delperdang'",
-
-	// Configure tool-specific properties.
-	// "customizations": {},
-
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
-
-	"containerEnv": {
-		"DEBUG": "true",
-		"SECRET_KEY": "${localEnv:SECRET_KEY}",
-		"SUPERUSER_EMAL": "${localEnv:SUPERUSER_EMAL}",
-		"SUPERUSER_NAME": "${localEnv:SUPERUSER_NAME}",
-		"SUPERUSER_PASS": "${localEnv:SUPERUSER_PASS}",
-		"ALLOWED_HOSTS": "${localEnv:ALLOWED_HOSTS}"
-	}
+	"runArgs": ["--env-file", ".devcontainer/dev.env"]
 }
