@@ -71,7 +71,7 @@ ZONE=lexcredendi.app
 PROXIED=false
 ```
 
-Before testing or deploying in docker, these environment variables must be added to a `.env` file in the root directory of the project.
+Before deploying in docker, these environment variables must be added to a `prod.env` file in the root directory of the project.
 
 ```
 lexcredendi
@@ -81,10 +81,10 @@ lexcredendi
 ├── django
 ├── nginx
 ├── scripts
-├── prod.env
 ├── .gitignore
 ├── docker-compose.yml
 ├── lexcredendi.code-workspace
+├── prod.env
 ├── README.md
 ```
 
