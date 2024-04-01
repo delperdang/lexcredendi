@@ -36,7 +36,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres-data:/var/lib/postgresql/data/
+      - postgres-data:/var/lib/postgresql/data
     env_file: prod.env
 
   certbot:
@@ -44,6 +44,7 @@ services:
     volumes:
       - certbot-conf:/etc/letsencrypt
       - certbot-www:/var/www/certbot
+      - certbot-data:/var/lib/letsencrypt
     depends_on:
       - nginx
 
@@ -59,3 +60,4 @@ volumes:
   postgres-data:
   certbot-conf:
   certbot-www:
+  certbot-data:
