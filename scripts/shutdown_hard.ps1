@@ -1,2 +1,6 @@
 docker-compose down --volumes
-docker system prune -a --force
+docker rmi lexcredendi-certbot
+docker rmi lexcredendi-django
+docker rmi lexcredendi-nginx
+docker rmi postgres
+docker rmi oznu/cloudflare-ddns
