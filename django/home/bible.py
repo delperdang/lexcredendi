@@ -51,19 +51,19 @@ class Bible(object):
         },
         '1kings': {
             'chapters': 22,
-            'abbreviations': ['1 Kgs', '1 Ki', '1K', 'I Kgs', '1Kgs', 'I Ki', '1Ki', '1Kin', '1st Kgs', '1st Kings', 'First Kgs', 'First Kings']
+            'abbreviations': ['1 Kgs', '1 Ki', '1K', 'I Kgs', '1Kgs', 'I Ki', '1Ki', '1Kin', '1st Kgs', '1st Kings', 'First Kgs', 'First Kings', '1 Kings', '1 Kg']
         },
         '2kings': {
             'chapters': 25,
-            'abbreviations': ['2 Kgs', '2 Ki', '2K', 'II Kgs', '2Kgs', 'II Ki', '2Ki', '2Kin', '2nd Kgs', '2nd Kings', 'Second Kgs', 'Second Kings']
+            'abbreviations': ['2 Kgs', '2 Ki', '2K', 'II Kgs', '2Kgs', 'II Ki', '2Ki', '2Kin', '2nd Kgs', '2nd Kings', 'Second Kgs', 'Second Kings', '2 Kings', '2 Kg']
         },
         '1chronicles': {
             'chapters': 29,
-            'abbreviations': ['1 Chron', '1 Ch', 'I Ch', '1Ch', '1 Chr', 'I Chr', '1Chr', 'I Chron', '1Chron', '1st Chron', '1st Chronicles', 'First Chron', 'First Chronicles']
+            'abbreviations': ['1 Chron', '1 Ch', 'I Ch', '1Ch', '1 Chr', 'I Chr', '1Chr', 'I Chron', '1Chron', '1st Chron', '1st Chronicles', 'First Chron', 'First Chronicles', '1 Chr']
         },
         '2chronicles': {
             'chapters': 36,
-            'abbreviations': ['2 Chron', '2 Ch', 'II Ch', '2Ch', 'II Chr', '2Chr', 'II Chron', '2Chron', '2nd Chron', '2nd Chronicles', 'Second Chron', 'Second Chronicles']
+            'abbreviations': ['2 Chron', '2 Ch', 'II Ch', '2Ch', 'II Chr', '2Chr', 'II Chron', '2Chron', '2nd Chron', '2nd Chronicles', 'Second Chron', 'Second Chronicles', '2 Chr']
         },
         'ezra': {
             'chapters': 10,
@@ -107,7 +107,7 @@ class Bible(object):
         },
         'ecclesiastes': {
             'chapters': 12,
-            'abbreviations': ['Eccles', 'Eccle', 'Ecc', 'Ec', 'Qoh']
+            'abbreviations': ['Eccles', 'Eccle', 'Eccl', 'Ecc', 'Ec', 'Qoh']
         },
         'songofsongs': {
             'chapters': 8,
@@ -243,11 +243,11 @@ class Bible(object):
         },
         '1thessalonians': {
             'chapters': 5,
-            'abbreviations': ['1 Thess', '1 Th', 'I Th', '1Th', 'I Thes', '1Thes', 'I Thess', '1Thess', 'I Thessalonians', '1Thessalonians', '1st Thess', '1st Thessalonians', 'First Thess', 'First Thessalonians']
+            'abbreviations': ['1 Thess', '1 Th', 'I Th', '1Th', 'I Thes', '1Thes', 'I Thess', '1Thess', 'I Thessalonians', '1Thessalonians', '1st Thess', '1st Thessalonians', 'First Thess', 'First Thessalonians', '1 Thes']
         },
         '2thessalonians': {
             'chapters': 3,
-            'abbreviations': ['2 Thess', '2 Th', 'II Th', '2Th', 'II Thes', '2Thes', 'II Thess', '2Thess', 'II Thessalonians', '2Thessalonians', '2nd Thess', '2nd Thessalonians', 'Second Thess', 'Second Thessalonians']
+            'abbreviations': ['2 Thess', '2 Th', 'II Th', '2Th', 'II Thes', '2Thes', 'II Thess', '2Thess', 'II Thessalonians', '2Thessalonians', '2nd Thess', '2nd Thessalonians', 'Second Thess', 'Second Thessalonians', '2 Thes']
         },
         '1timothy': {
             'chapters': 6,
@@ -283,15 +283,15 @@ class Bible(object):
         },
         '1john': {
             'chapters': 5,
-            'abbreviations': ['1 John', '1 Jn', 'I Jn', '1Jn', 'I Jo', '1Jo', 'I Joh', '1Joh', 'I Jhn', '1 Jhn', '1Jhn', '1 J', '1J', 'I John', '1John', '1st John', 'First John']
+            'abbreviations': ['1 John', '1 Jn', 'I Jn', '1Jn', 'I Jo', '1Jo', 'I Joh', '1Joh', 'I Jhn', '1 Jhn', '1Jhn', '1 J', '1J', 'I John', '1John', '1st John', 'First John', '1 Jn']
         },
         '2john': {
             'chapters': 1,
-            'abbreviations': ['2 John', '2 Jn', 'II Jn', '2Jn', 'II Jo', '2Jo', 'II Joh', '2Joh', 'II Jhn', '2 Jhn', '2Jhn', '2 J', '2J', 'II John', '2John', '2nd John', 'Second John']
+            'abbreviations': ['2 John', '2 Jn', 'II Jn', '2Jn', 'II Jo', '2Jo', 'II Joh', '2Joh', 'II Jhn', '2 Jhn', '2Jhn', '2 J', '2J', 'II John', '2John', '2nd John', 'Second John', '2 Jn']
         },
         '3john': {
             'chapters': 1,
-            'abbreviations': ['3 John', '3 Jn', 'III Jn', '3Jn', 'III Jo', '3Jo', 'III Joh', '3Joh', 'III Jhn', '3 Jhn', '3Jhn', '3 J', '3J', 'III John', '3John', '3rd John', 'Third John']
+            'abbreviations': ['3 John', '3 Jn', 'III Jn', '3Jn', 'III Jo', '3Jo', 'III Joh', '3Joh', 'III Jhn', '3 Jhn', '3Jhn', '3 J', '3J', 'III John', '3John', '3rd John', 'Third John', '3 Jn']
         },
         'jude': {
             'chapters': 1,
