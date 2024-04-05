@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.db.models import Q
+from django.utils import timezone
 from bible.models import Record
 from home.podcast import Podcast
 from home.bible import Bible
@@ -26,6 +27,12 @@ def search(request):
 
 def home(request):
     records = Record.objects.all().order_by('code')
+    
+    day_code = 'DAY' + timezone.localtime().date().strftime('%j')
+    print(day_code)
+    for record in records:
+        if record.code == day_code:
+            record.highlight = True
 
     context = {
         'app_name': APP_NAME,

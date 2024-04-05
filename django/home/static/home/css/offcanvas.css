@@ -76,6 +76,13 @@ body {
 .bg-christmas-gold { background-color: #D9CD67; }
 .bg-easter-gold { background-color: #E1B04A; }
 
+.bg-ordinary-green-light { background-color: #C2E2A0; } /* Lighter green */
+.bg-triduum-red-light { background-color: #D35A56; } /* Lighter red */
+.bg-lent-purple-light { background-color: #C2B2E0; } /* Lighter purple */
+.bg-advent-purple-light { background-color: #B7BDED; } /* Lighter purple */
+.bg-christmas-gold-light { background-color: #F2EB9C; } /* Lighter gold */
+.bg-easter-gold-light { background-color: #F0D08C; } /* Lighter gold */
+
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
 
 .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
