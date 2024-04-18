@@ -99,7 +99,7 @@ lexcredendi
     - `/live/lexcredendi.app/fullchain.pem`
 6) Copy those saved files to the `certbot` directory in the project
 7) Repeat steps 1-3 following the comments for once SSL is active
-8) Run `scripts/shutdown_hard.ps1` (if not on Windows try the command from the script in you default shell)
+8) Run `scripts/shutdown.ps1` (if not on Windows try the command from the script in you default shell)
 9) Run `scripts/startup.ps1` (if not on Windows try the command from the script in you default shell)
 
 #### Startup Procedure
@@ -108,9 +108,7 @@ Run `scripts/startup.ps1` to build and start up all the docker containers
 
 #### Shutdown Procedures
 
-Run `scripts/shutdown_hard.ps1` to destroy all containers, volumes, and images
-
-Run `scripts/shutdown_soft.ps1` to destroy all containers and images
+Run `scripts/shutdown.ps1` to destroy all containers, volumes, and images
 
 ## Configuration
 
