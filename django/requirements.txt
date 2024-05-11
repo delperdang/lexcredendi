@@ -3,7 +3,7 @@ Django
 django-tz-detect
 python-dateutil
 requests
-django-import-export
+django-import-export==3.3.9
 Pillow
 gunicorn
 psycopg[binary,pool]
