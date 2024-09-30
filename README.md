@@ -51,7 +51,26 @@ You will now be able to access your test server from a browser on your host mach
 
 ### Docker
 
-Before attempting to deploy to docker you should have [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed.
+Before attempting to deploy with docker-compose you should have the following Docker components installed.
+```
+sudo dnf remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-selinux \
+                  docker-engine-selinux \
+                  docker-engine -y
+sudo dnf install dnf-plugins-core -y
+sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo -y
+sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-compose -y
+sudo systemctl enable docker
+sudo groupadd docker
+sudo usermod -aG docker $USER
+sudo shutdown -r now
+```
 
 ### Environment variables
 
@@ -88,19 +107,14 @@ lexcredendi
 ├── README.md
 ```
 
-#### Retrieving an SSL Cert
+#### Initial Startup Procedure
 
-1) Follow the comments in `certbot/Dockerfile`
-2) Follow the comments in `django/gunicorn_config.py`
-3) Follow the comments in `nginx/Dockerfile`
-4) Run `scripts/certonly.ps1` (if not on Windows try the command from the script in you default shell)
-5) Assuming success... open Docker Desktop, go to Volumes, select lexcredendi_certbot-conf, and save the following files:
-    - `/live/lexcredendi.app/fullchain.pem`
-    - `/live/lexcredendi.app/fullchain.pem`
-6) Copy those saved files to the `certbot` directory in the project
-7) Repeat steps 1-3 following the comments for once SSL is active
-8) Run `scripts/shutdown.ps1` (if not on Windows try the command from the script in you default shell)
-9) Run `scripts/startup.ps1` (if not on Windows try the command from the script in you default shell)
+1) Define a location on the host machine to persist the SSL certfile and keyfile, then update that in docker-compose.yml (e.g. /mnt/d/lexcredendi/etc/letsencrypt)
+2) Follow the comments in `nginx/Dockerfile`
+3) Run `scripts/certonly.sh`
+4) Rune `scripts/shutdown.sh`
+5) Repeat step 2 following the comments for once SSL is active
+6) Run `scripts/startup.ps1`
 
 #### Startup Procedure
 
