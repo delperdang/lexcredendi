@@ -1,6 +1,7 @@
 import requests
 import dateutil.parser as dparser
 from dateutil.parser._parser import ParserError
+from urllib.parse import urljoin
 from bs4 import BeautifulSoup
 
 class Readings(object):
@@ -10,7 +11,6 @@ class Readings(object):
     # USCCB URL constants
     USCCB_ROOT = 'http://www.usccb.org'
     USCCB_READINGS = 'http://www.usccb.org/bible/readings/{}.cfm'
-    USCCB_AUDIO = 'http://ccc.usccb.org/cccradio/NABPodcasts/nab_feed.xml'
 
     def _get_readings_url(self, local_now):
         '''
@@ -103,27 +103,34 @@ class Readings(object):
                 )
         return readings
 
-    def _extract_audio(self, soup, local_now):
-        '''
-        extracts audio url for current readings mp3
-        '''
-        url = ''
-        local_now_date = local_now.date()
-        items = soup.findAll('item')
-        for item in items:
-            title_text = item.title.text
-            title_text_date_left = title_text.split('For ')[-1].split(',')[0]
-            title_text_date_right = title_text.split(',')[-1][0:5]
-            title_text_date = "{},{}".format(title_text_date_left,title_text_date_right) 
-            try:
-                title_date = dparser.parse(title_text_date, ignoretz=True).date()
-                if local_now_date == title_date:
-                    url = item.enclosure.get('url')
-            except ParserError as err:
-                pass
+    def _extract_audio(self, soup):
+        """
+        Extracts the podcast audio URL from the provided HTML snippet.
+
+        Args:
+            html_content (str): The HTML content as a string.
+
+        Returns:
+            str: The absolute URL of the podcast audio, or None if not found.
+        """
+        base_url = "https://bible.usccb.org" # Base URL needed for relative links
+        target_url = None
+
+        # Find the <a> tag with class 'icon-microphone' and text 'LISTEN PODCAST'
+        link_tag = soup.find('a', class_='icon-microphone', string='LISTEN PODCAST')
+
+        if link_tag and link_tag.has_attr('href'):
+            relative_url = link_tag['href']
+            # Use urljoin to handle both absolute and relative URLs correctly
+            target_url = urljoin(base_url, relative_url)
+            # target_url = base_url + relative_url
+        else:
+            print("Could not find the target link tag or its href attribute.")
+
         audio = {
-            'title': 'Complete Audio',
-            'text': '<a href="{}">{}</a>'.format(url, 'Click to play')
+            'title': 'Podcast Audio Link',
+            'url': target_url,
+            'text': f'<a href="{target_url}">Click to listen</a>' if target_url else 'Link not found'
         }
         return audio
 
@@ -133,8 +140,7 @@ class Readings(object):
         '''
         readings_url = self._get_readings_url(localtime)
         readings_soup = self._get_page_soup(readings_url)
-        audio_soup = self._get_page_soup(self.USCCB_AUDIO)
         readings_records = self._assemble_readings_dict(readings_soup)
-        audio_record = self._extract_audio(audio_soup, localtime)
+        audio_record = self._extract_audio(readings_soup)
         readings_records.append(audio_record)
         return readings_records
