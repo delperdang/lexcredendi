@@ -164,22 +164,6 @@ class Bible:
         escaped_abbreviations = [re.escape(a) for a in abbreviations]
         book_pattern = '|'.join(escaped_abbreviations)
 
-        # Regex breakdown:
-        # \b                  - Word boundary (start)
-        # (book_pattern)      - Capturing group 1: The matched book abbreviation (longest first)
-        # (?:\s*\.\s*|\s+)    - Non-capturing group: Matches optional period surrounded by optional whitespace OR just whitespace
-        # (\d+)               - Capturing group 2: The chapter number (one or more digits)
-        # \b                  - Word boundary (end)
-        # Handle potential verse numbers following chapter (e.g., Gen 1:1, John 3:16-17)
-        # We only link to the chapter, so we match but don't use the verse part.
-        # (?:[:.]\s*\d+(?:[-–—]\d+)?)* - Optional non-capturing group for verses:
-        #   [:.]              - Matches ':' or '.' separator
-        #   \s* - Optional whitespace
-        #   \d+               - Verse number
-        #   (?:[-–—]\d+)?    - Optional range (e.g., -17) using different dash types
-        #   * - Allows multiple verse parts (though unlikely needed for chapter link)
-
-        # Combine parts into the final pattern
         # regex_pattern = rf'\b({book_pattern})(?:\s*\.\s*|\s+)(\d+)\b' # Original without verse handling
         regex_pattern = rf'\b({book_pattern})(?:\s*\.\s*|\s+)(\d+)(?:[:.]\s*\d+(?:(?:[-–—]\s*)?\d+)?)*\b'
 
