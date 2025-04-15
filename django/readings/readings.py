@@ -95,12 +95,13 @@ class Readings(object):
                 temp_citation = heading.a.text
                 temp_title = 'Gospel'
                 temp_text = '<a href="{}">{}</a>'.format(temp_link, temp_citation)
-                readings.append(
-                    {
-                        'title': temp_title,
-                        'text': temp_text,
-                    }
-                )
+                if len(temp_citation) > 1:
+                    readings.append(
+                        {
+                            'title': temp_title,
+                            'text': temp_text,
+                        }
+                    )
         return readings
 
     def _extract_audio(self, soup):
