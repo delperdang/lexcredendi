@@ -47,12 +47,13 @@ class Readings(object):
                 temp_citation = heading.a.text
                 temp_title = 'Reading 1'
                 temp_text = '<a href="{}">{}</a>'.format(temp_link, temp_citation)
-                readings.append(
-                    {
-                        'title': temp_title,
-                        'text': temp_text,
-                    }
-                )
+                if len(temp_citation) > 1:
+                    readings.append(
+                        {
+                            'title': temp_title,
+                            'text': temp_text,
+                        }
+                    )
             if 'READING 2' in heading.text.upper() or 'READING II' in heading.text.upper():
                 if heading.a.get('href', '').startswith('http'):
                     temp_link = heading.a.get('href')
@@ -63,12 +64,13 @@ class Readings(object):
                 temp_citation = heading.a.text
                 temp_title = 'Reading 2'
                 temp_text = '<a href="{}">{}</a>'.format(temp_link, temp_citation)
-                readings.append(
-                    {
-                        'title': temp_title,
-                        'text': temp_text,
-                    }
-                )
+                if len(temp_citation) > 1:
+                    readings.append(
+                        {
+                            'title': temp_title,
+                            'text': temp_text,
+                        }
+                    )
             if 'RESPONSORIAL PSALM' in heading.text.upper():
                 if heading.a.get('href', '').startswith('http'):
                     temp_link = heading.a.get('href')
@@ -79,12 +81,13 @@ class Readings(object):
                 temp_citation = heading.a.text
                 temp_title = 'Responsorial Psalm'
                 temp_text = '<a href="{}">{}</a>'.format(temp_link, temp_citation)
-                readings.append(
-                    {
-                        'title': temp_title,
-                        'text': temp_text,
-                    }
-                )
+                if len(temp_citation) > 1:
+                    readings.append(
+                        {
+                            'title': temp_title,
+                            'text': temp_text,
+                        }
+                    )
             if 'GOSPEL' in heading.text.upper():
                 if heading.a.get('href', '').startswith('http'):
                     temp_link = heading.a.get('href')
